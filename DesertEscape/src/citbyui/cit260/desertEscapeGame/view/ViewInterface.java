@@ -68,10 +68,10 @@ public interface ViewInterface {
             //Scanner keyboard = new Scanner(System.in); //get infile for keyboard
             String value = ""; //value to be returned
             boolean valid = false; //initialize to not valid
-         try {
+        
             while (!valid) { //loop while an invalid is entered
                 this.console.println(this.displayMessage);
-
+            try {
                 value = this.keyboard.readLine();// get next line typed on keyboard
                 value = value.trim();// trim of leading and trailing blanks
 
@@ -82,15 +82,17 @@ public interface ViewInterface {
                 }
                 break; // end loop
             }
-         } catch(Exception e){
+          catch(Exception e){
              ErrorView.display(this.getClass().getName(),
                      "Error reading input:" +e.getMessage());
          }
+            }
             return value; // return value entered
         }
 
        @Override
         public boolean doAction(String value) {
+            
 
             value = value.toUpperCase();
             return false;

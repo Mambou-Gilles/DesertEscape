@@ -9,12 +9,34 @@ import byui.cit260.desertEscapeGame.model.InventoryItem;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import citbyui.cit260.desertEscapeGame.view.GameMenuView;
 import desertescape.DesertEscape;
+import java.io.PrintWriter;
 
 /**
  *
  * @author Paez & Mambou
  */
 public class InventorySort extends View {
+
+    static void InventoryPrint(InventoryItem[] inventory, String filepath) {
+        try (PrintWriter out = new PrintWriter(filepath)){
+            
+            // print tittle and column heading
+            out.println("\n\n                Inventory Report                 ");
+            out.printf("%n%-20s%10s%10s", "Description", "Quantity In Stock", "Required Amount");
+            out.printf("%n%-20s%10s%10s", "---------------------------------------------------");
+            
+             //print the description, the required amount and amount in stock
+            for (InventoryItem item : inventory) {
+           
+            out.printf("%n%-20s%7d%13.2f", item.getDescription()
+                                                       ,item.getQuantityInStock()
+                                                    ,item.getRequiredAmount());
+        }
+           
+        } catch (Exception ex) {
+           System.out.println("I/O Error: " + ex.getMessage());
+        }
+    }
 
     private String message = "";
     private String displayScene = "";

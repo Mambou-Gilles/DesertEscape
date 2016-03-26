@@ -79,7 +79,7 @@ public class BodyMassView {
             try {
                 this.console.println("\n" + this.displayMessage1);
                 weight = keyboard.nextDouble();// get next line typed on keyboard
-                weight = Double.parseDouble(value1);
+               // weight = Double.parseDouble(value1);
             } catch (NumberFormatException nfe) {
                 ErrorView.display(this.getClass().getName(),
                        "Please write a correct number");
@@ -89,7 +89,7 @@ public class BodyMassView {
                 this.console.println("\n" + this.displayMessage2);
                 //height = keyboard.nextDouble();// get next line typed on keyboard
                 height = keyboard.nextDouble();// get next line typed on keyboard
-                height = Double.parseDouble(value2);
+                //height = Double.parseDouble(value2);
             } catch (NumberFormatException nfe) {
                  ErrorView.display(this.getClass().getName(),
                         "Please write a correct number");
@@ -114,13 +114,13 @@ public class BodyMassView {
     }
 
     private boolean doAction(double bodyMass) {
-        Scanner keyboard = new Scanner(System.in);
+        //Scanner keyboard = new Scanner(System.in);
         
-        double weight = keyboard.nextDouble();
-        weight = Double.parseDouble(value1);
+        //double weight = keyboard.nextDouble();
+        double weight = Double.parseDouble(value1);
        
-        double height = keyboard.nextDouble();
-        height = Double.parseDouble(value2);
+        //double height = keyboard.nextDouble();
+        double height = Double.parseDouble(value2);
         double mass;
 
         if (weight <= 0 || height <= 0) {

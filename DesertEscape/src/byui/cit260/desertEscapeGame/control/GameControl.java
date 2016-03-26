@@ -20,6 +20,7 @@ import byui.cit260.desertEscapeGame.model.Player;
 import byui.cit260.desertEscapeGame.model.Scene;
 import byui.cit260.desertEscapeGame.model.SceneType;
 import byui.cit260.desertEscapeGame.model.ShopDownTree;
+import citbyui.cit260.desertEscapeGame.view.ErrorView;
 import desertescape.DesertEscape;
 import java.awt.Point;
 import java.io.FileInputStream;
@@ -158,29 +159,36 @@ public class GameControl {
 
     }
 
-    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
+    public static void saveGame(String filePath) /*throws GameControlException*/ {
         
         try(FileOutputStream fops = new FileOutputStream(filePath)){
             ObjectOutputStream output = new ObjectOutputStream(fops);
             
-            output.writeObject(currentGame);// write game object out to file
+            output.writeObject(DesertEscape.getCurrentGame());// write game object out to file
             } catch (Exception e) {
-                throw new GameControlException(e.getMessage());
+                 ErrorView.display("GameControl", e.getMessage());
+                //throw new GameControlException(e.getMessage());
             }
     }
 
-    public static void getSavedGame(String filePath) throws GameControlException {
+    public static void getSavedGame(String filePath) /*throws GameControlException*/ {
         Game currentGame = null;
         
         try (FileInputStream fips = new FileInputStream(filePath)){
             ObjectInputStream input =  new ObjectInputStream(fips);
             
-            currentGame = (Game) input.readObject();// read the game object from file
+            currentGame = (Game)input.readObject();// read the game object from file
+            
+            DesertEscape.setCurrentGame(currentGame);
+            DesertEscape.setPlayer(currentGame.getPlayer());
         }
         catch (Exception e) {
-            throw new GameControlException(e.getMessage());
+            ErrorView.display("GameControl", e.getMessage());
+            //throw new GameControlException(e.getMessage());
         }
         // close the output file
         DesertEscape.setCurrentGame(currentGame);// saved in DesertEscape
     }  
+
+    
 }

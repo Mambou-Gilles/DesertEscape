@@ -25,7 +25,7 @@ public class MainMenuView extends View {
     private String displayMenu = "";
     
     protected final BufferedReader keyboard = DesertEscape.getInFile();
-        protected final PrintWriter console = DesertEscape.getOutFile();
+    protected final PrintWriter console = DesertEscape.getOutFile();
 
     public MainMenuView() throws MapControlException{
 
@@ -119,18 +119,17 @@ public class MainMenuView extends View {
     private void resumeSavedGame() {
         this.console.println("\n\n Enter the file path for file wher the game"
                 +" is to saved");
-        String filePath = this.getInput();
+        //String filePath = this.getInput();
         
         try {
+             String filePath = keyboard.readLine();
             //save the game to the specified file
             GameControl.getSavedGame(filePath);
+            GameMenuView gmv = new GameMenuView();
+            gmv.display();
         } catch (Exception ex){
-            ErrorView.display("MainMenuView", ex.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error on Input");
         }
-        
-        //display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
     }
 
     private void displayHelpMenu() {
@@ -143,13 +142,15 @@ public class MainMenuView extends View {
         //Prompt for and and get the name of the file to save the game
         this.console.println("\n\n Enter the file path for the file where "
                 + "the game is to be saved ");
-        String filePath = this.getInput();
+        // filePath = this.getInput();
         
         try {
+             String filePath = keyboard.readLine();
             //save the game to the specified file
-            GameControl.saveGame(DesertEscape.getCurrentGame(), filePath);
+            GameControl.saveGame(filePath);
         } catch (Exception ex){
-            ErrorView.display("MainMenuView", ex.getMessage());
+            ErrorView.display(this.getClass().getName(), "Error on Input");
+            //ErrorView.display("MainMenuView", ex.getMessage());
         }
     }
 

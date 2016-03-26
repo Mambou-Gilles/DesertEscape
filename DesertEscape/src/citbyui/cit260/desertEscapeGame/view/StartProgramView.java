@@ -71,7 +71,7 @@ public class StartProgramView extends View {
              ErrorView.display(this.getClass().getName(),
                      "\nInvalid player name: "
                     + "The name must be greater than one character in length");
-            return true;
+            return false;
         }
 
         //call createPlayer() control function

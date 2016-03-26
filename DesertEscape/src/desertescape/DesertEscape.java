@@ -82,6 +82,8 @@ public class DesertEscape {
         
         MainMenuView main = new MainMenuView();
         main.display();
+        
+        
         return;
         } catch (Throwable te) {
             System.out.println("Exception:" + te.toString() +
@@ -156,7 +158,7 @@ public class DesertEscape {
         /*try {
             startProgramView.display();
         } catch (Throwable te) {
-            System.out.println(te.getMessage());
+            this.console.println(te.getMessage());
             te.printStackTrace();
             startProgramView.display();
             );                    

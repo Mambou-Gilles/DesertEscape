@@ -7,11 +7,15 @@ package citbyui.cit260.desertEscapeGame.view;
 
 import byui.cit260.desertEscapeGame.exceptions.MovementControllerException;
 import byui.cit260.desertEscapeGame.control.MovementController;
+import byui.cit260.desertEscapeGame.model.Game;
 import byui.cit260.desertEscapeGame.model.InventoryItem;
 //import byui.cit260.desertEscapeGame.model.InventoryItem;
 import byui.cit260.desertEscapeGame.model.Location;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import desertescape.DesertEscape;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +24,7 @@ import java.util.logging.Logger;
  * @author mambou
  */
 public class GameMenuView extends View {
+   
 
     public GameMenuView() {
 
@@ -36,6 +41,7 @@ public class GameMenuView extends View {
                 + "\n  S - Move person to South"
                 + "\n  W - Move person to West"
                 + "\n  I - View inventory list with costs"
+                + "\n  P - Print inventory list"
                 + "\n  Z - Sort inventory list"
                 + "\n  R - Estimate the resource needed"
                 + "\n  H - Help"
@@ -78,6 +84,9 @@ public class GameMenuView extends View {
             case "I": // View inventory list with costs
                 this.ViewInventory();
                 break;
+            case "P": // View inventory list with costs
+                this.PrintReport();
+                break;
             case "Z": // Sorted inventory list
                 this.SortInventory();
                 break;
@@ -101,7 +110,7 @@ public class GameMenuView extends View {
 
     }
 
-    private void ViewInventory() {
+    void ViewInventory() {
 
         InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
 
@@ -196,6 +205,19 @@ public class GameMenuView extends View {
         /*if (mc.moveWest(DesertEscape.getCurrentGame()) == false) {
             this.console.println("You cannot move there");
         }*/
+    }
+
+    private void PrintReport() {
+        this.console.println("\n Enter the file path  of where the report is to be printed.");
+        
+        String filepath = this.getInput();
+       
+        InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
+        try {
+        InventorySort.InventoryPrint(inventory, filepath);
+    } catch (Exception e) {
+        ErrorView.display("GameMenuView", e.getMessage());
+    }
     }
 
 }
