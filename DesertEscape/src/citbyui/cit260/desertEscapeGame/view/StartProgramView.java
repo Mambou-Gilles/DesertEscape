@@ -82,10 +82,10 @@ public class StartProgramView extends View {
             Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        /*if (player == null) { // if unsuccesful
+        if (player == null) { // if unsuccesful
             this.console.println("\nError creating the player.");
             return false;
-        }*/
+        }
 
         //display next view
         this.displayNextView(player);

@@ -21,13 +21,7 @@ public class InventoryItem implements Serializable {
     private String inventory;
     private Integer quantityInStock;
     private Integer requiredAmount;
-    private String medicine;
-    private String water;
-    private String knife;
-    private String boots;
-    private String food;
-    private String shirt;
-
+    
     public InventoryItem() {
     }
     
@@ -63,62 +57,17 @@ public class InventoryItem implements Serializable {
         this.requiredAmount = requiredAmount;
     }
 
-    public String getMedicine() {
-        return medicine;
-    }
-
-    public void setMedicine(String medicine) {
-        this.medicine = medicine;
-    }
-
-    public String getWater() {
-        return water;
-    }
-
-    public void setWater(String water) {
-        this.water = water;
-    }
-
-    public String getKnife() {
-        return knife;
-    }
-
-    public void setKnife(String knife) {
-        this.knife = knife;
-    }
-
-    public String getBoots() {
-        return boots;
-    }
-
-    public void setBoots(String boots) {
-        this.boots = boots;
-    }
-
-    public String getFood() {
-        return food;
-    }
-
-    public void setFood(String food) {
-        this.food = food;
-    }
-
-    public String getShirt() {
-        return shirt;
-    }
-
-    public void setShirt(String shirt) {
-        this.shirt = shirt;
-    }
-
-    /*@Override
+    @Override
     public String toString() {
         return "InventoryItem{" + "description=" + description + ", inventoryItem=" 
                 + inventory + ", quantityInStock=" + quantityInStock + ", requiredAmount=" 
-                + requiredAmount + ", medicine=" + medicine + ", water=" 
+                + requiredAmount + '}';
+/*
+                + ", medicine=" + medicine + ", water=" 
                 + water + ", knife=" + knife + ", boots=" + boots + ", food=" 
                 + food + ", shirt=" + shirt + '}';
-    }
+*/
+        }
     
     @Override
     public int hashCode() {
@@ -127,12 +76,14 @@ public class InventoryItem implements Serializable {
         hash = 43 * hash + Objects.hashCode(this.inventory);
         hash = 43 * hash + Objects.hashCode(this.quantityInStock);
         hash = 43 * hash + Objects.hashCode(this.requiredAmount);
+/*        
         hash = 43 * hash + Objects.hashCode(this.medicine);
         hash = 43 * hash + Objects.hashCode(this.water);
         hash = 43 * hash + Objects.hashCode(this.knife);
         hash = 43 * hash + Objects.hashCode(this.boots);
         hash = 43 * hash + Objects.hashCode(this.food);
         hash = 43 * hash + Objects.hashCode(this.shirt);
+*/
         return hash;
     }
 
@@ -154,7 +105,7 @@ public class InventoryItem implements Serializable {
         if (!Objects.equals(this.inventory, other.inventory)) {
             return false;
         }
-        if (!Objects.equals(this.medicine, other.medicine)) {
+/*        if (!Objects.equals(this.medicine, other.medicine)) {
             return false;
         }
         if (!Objects.equals(this.water, other.water)) {
@@ -172,6 +123,7 @@ public class InventoryItem implements Serializable {
         if (!Objects.equals(this.shirt, other.shirt)) {
             return false;
         }
+*/
         if (!Objects.equals(this.quantityInStock, other.quantityInStock)) {
             return false;
         }
@@ -179,10 +131,5 @@ public class InventoryItem implements Serializable {
             return false;
         }
         return true;
-    }
-*/
-    
-    
-    
-    
+    }   
 }

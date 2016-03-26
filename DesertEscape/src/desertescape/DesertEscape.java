@@ -40,7 +40,6 @@ public class DesertEscape {
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
     
-
     public static PrintWriter getOutFile() {
         return outFile;
     }
@@ -55,7 +54,7 @@ public class DesertEscape {
 
     public static void setInFile(BufferedReader inFile) {
         DesertEscape.inFile = inFile;
-    } 
+    }
 
     public static PrintWriter getLogFile() {
         return logFile;
@@ -65,51 +64,11 @@ public class DesertEscape {
         DesertEscape.logFile = logFile;
     }
     
+    
+
     public static void main(String[] args) {
-        
-       try { 
-        //open character stream files for end user input and output
-         DesertEscape.inFile = new BufferedReader(new InputStreamReader(System.in));
-         DesertEscape.outFile = new PrintWriter(System.out, true);
-         
-         //open log file
-         String filePath = "log.txt";
-         DesertEscape.logFile = new PrintWriter(filePath);
-         
-         //create StartProgramView()rig and display the start program view here
-        StartProgramView startProgramView = new StartProgramView();
-        startProgramView.display();
-        
-        MainMenuView main = new MainMenuView();
-        main.display();
-        
-        
-        return;
-        } catch (Throwable te) {
-            System.out.println("Exception:" + te.toString() +
-                               "\nCause:" + te.getCause() +
-                               "\nMessage:" + te.getMessage());
-            te.printStackTrace();;
-           
-        }
-       finally {
-           try {
-               if(DesertEscape.inFile != null)
-                 DesertEscape.inFile.close();
-               
-               if(DesertEscape.outFile != null)
-                 DesertEscape.outFile.close();
-               
-               if(DesertEscape.logFile != null)
-                  DesertEscape.logFile.close();
-           } catch (IOException ex) {
-               System.out.println("Error closing files");
-               return;
-           } 
-       }
 
-         
-
+        
         try {
 
             // Open character stream files for input and output 
@@ -129,25 +88,29 @@ public class DesertEscape {
             mainMenuView.display();
 
             return;
-            
+
         } catch (Throwable e) {
-        
-            System.out.println( "Exception: " + e.toString()
+
+            System.out.println(
+                    "Exception: " + e.toString()
                     + "\nCause:" + e.getCause()
                     + "\nMesssage: " + e.getMessage());
             e.printStackTrace();
-            
+
         } finally {
             try {
-                if (DesertEscape.inFile != null)  
+                if (DesertEscape.inFile != null) {
                     DesertEscape.inFile.close();
-                 
-                if (DesertEscape.outFile != null)  
+                }
+
+                if (DesertEscape.outFile != null) {
                     DesertEscape.outFile.close();
-                 
-                if (DesertEscape.logFile != null)  
+                }
+
+                if (DesertEscape.logFile != null) {
                     DesertEscape.logFile.close();
-                 
+                }
+
             } catch (IOException ex) {
                 //Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Error closing files");
@@ -207,7 +170,5 @@ public class DesertEscape {
     public static void setPlayer(Player player) {
         DesertEscape.player = player;
     }
-
-    
 
 }

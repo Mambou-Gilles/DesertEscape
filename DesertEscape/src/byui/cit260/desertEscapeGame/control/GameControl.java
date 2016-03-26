@@ -159,7 +159,7 @@ public class GameControl {
 
     }
 
-    public static void saveGame(String filePath) /*throws GameControlException*/ {
+    public static void saveGame(Game currentGame, String filePath) /*throws GameControlException*/ {
         
         try(FileOutputStream fops = new FileOutputStream(filePath)){
             ObjectOutputStream output = new ObjectOutputStream(fops);

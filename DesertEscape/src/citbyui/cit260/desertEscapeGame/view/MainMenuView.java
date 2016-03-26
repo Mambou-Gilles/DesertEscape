@@ -147,7 +147,7 @@ public class MainMenuView extends View {
         try {
              String filePath = keyboard.readLine();
             //save the game to the specified file
-            GameControl.saveGame(filePath);
+            GameControl.saveGame(DesertEscape.getCurrentGame(), filePath);
         } catch (Exception ex){
             ErrorView.display(this.getClass().getName(), "Error on Input");
             //ErrorView.display("MainMenuView", ex.getMessage());

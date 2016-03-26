@@ -28,7 +28,7 @@ public interface ViewInterface {
         protected String displayScene;
         protected String displayHelp;
         protected String displayPromptMessage;
-        
+
         protected final BufferedReader keyboard = DesertEscape.getInFile();
         protected final PrintWriter console = DesertEscape.getOutFile();
 
@@ -65,38 +65,43 @@ public interface ViewInterface {
         @Override
         public String getInput() {
 
-            //Scanner keyboard = new Scanner(System.in); //get infile for keyboard
+            // Scanner keyboard = new Scanner(System.in); //get infile for keyboard
             String value = ""; //value to be returned
             boolean valid = false; //initialize to not valid
-        
-            while (!valid) { //loop while an invalid is entered
-                this.console.println(this.displayMessage);
+           
+
             try {
-                value = this.keyboard.readLine();// get next line typed on keyboard
-                value = value.trim();// trim of leading and trailing blanks
+                while (!valid) { //loop while an invalid is entered
+                    this.console.println(this.displayMessage);
 
-                if (value.length() < 1) { // value is blank
-                    ErrorView.display(this.getClass().getName(),
-                 "Invalid value: value cannot be blank, please enter a value");
-                    continue;
+
+                    // value = keyboard.nextLine();// get next line typed on keyboard
+                    value = this.keyboard.readLine();// get next line typed on keyboard
+                    value = value.trim();// trim of leading and trailing blanks
+
+                    if (value.length() < 1) { // value is blank
+                        ErrorView.display(this.getClass().getName(),
+                                "Invalid value: value cannot be blank, please enter a value");
+                        continue;
+                    }
+                    break; // end loop
                 }
-                break; // end loop
+            } catch (Exception e) {
+                ErrorView.display(this.getClass().getName(),
+                        "Error reading input:" + e.getMessage());
             }
-          catch(Exception e){
-             ErrorView.display(this.getClass().getName(),
-                     "Error reading input:" +e.getMessage());
-         }
-            }
+
             return value; // return value entered
+
         }
 
-       @Override
-        public boolean doAction(String value) {
-            
+    @Override
+    public boolean doAction(String value
+    ) {
 
-            value = value.toUpperCase();
-            return false;
-        }
-
+        value = value.toUpperCase();
+        return false;
     }
+
+}
 }
