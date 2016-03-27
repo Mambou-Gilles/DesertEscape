@@ -6,6 +6,7 @@
 package citbyui.cit260.desertEscapeGame.view;
 
 import byui.cit260.desertEscapeGame.control.GameControl;
+import byui.cit260.desertEscapeGame.exceptions.GameControlException;
 import byui.cit260.desertEscapeGame.exceptions.MapControlException;
 import byui.cit260.desertEscapeGame.model.Player;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
@@ -23,11 +24,12 @@ public class MainMenuView extends View {
 
     private String displayMessage = "";
     private String displayMenu = "";
+
     
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
 
-    public MainMenuView() throws MapControlException{
+    public MainMenuView() throws MapControlException {
 
         // displayPromptMessage = "Please enter any menu option ";       
         //this.displayMessage = "\nPlease enter menu option";
@@ -52,20 +54,9 @@ public class MainMenuView extends View {
         value = value.toUpperCase(); // Convert menuOpton to uppercase
 
         switch (value) {
-            case "N": {
-                try {
-                    // Create and Start New Game
-                    this.startNewGame();
-                } catch (MapControlException ex) {
-                    this.console.println(ex.getMessage());
-                    GameMenuView gameMenu = new GameMenuView();
-                    gameMenu.display();
-
-                    //this.console.println();
-                    //Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            break;
+            case "N": // start new game
+                this.startNewGame();
+                break;
             case "R": // resume the game
                 this.resumeSavedGame();
                 break;
@@ -82,54 +73,73 @@ public class MainMenuView extends View {
                 break;
             default:
                 ErrorView.display(this.getClass().getName(),
-                    "\n*** Invalid selection *** Try again");
-                break;
+                        "\n*** Invalid selection *** Try again");
         }
         return false;
-    }
+        }
 
-    private void startNewGame() throws MapControlException {
+    private void startNewGame() {
 
+        
+
+        // fuel use control
+        /*FuelUseVolume fuelUse = new FuelUseVolume();
         try {
-            // fuel use control
-            FuelUseVolume fuelUse = new FuelUseVolume();
             fuelUse.fuelUse();
-            
-            //create BodyMassView() and display the calculation
-            BodyMassView bodyMassView = new BodyMassView();
-            bodyMassView.displayBodyMassView();
-            
-            
-            //create new Game
-            GameControl.createNewGame(DesertEscape.getPlayer());
-            
-            //display the game menu
-            GameMenuView gameMenu = new GameMenuView();
-            gameMenu.display();
-            
-            //GameMenuView game = new GameMenuView();
-            //game.MoveNorth();
-            // Run Mission select
-            // Mission(AlienCamp);
         } catch (byui.cit.desertEscapeGame.exceptions.MapControlException ex) {
             Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        //create BodyMassView() and display the calculation 
+        BodyMassView bodyMassView = new BodyMassView();
+        try {
+            bodyMassView.displayBodyMassView();
+        } catch (byui.cit.desertEscapeGame.exceptions.MapControlException ex) {
+            //Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+
+        try {
+            //create new Game
+            GameControl.createNewGame(DesertEscape.getPlayer());
+        } catch (MapControlException ex) {
+            //Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+
     }
 
     private void resumeSavedGame() {
+
         this.console.println("\n\n Enter the file path for file wher the game"
                 +" is to saved");
-        //String filePath = this.getInput();
-        
+        String filePath = this.getInput();
+          
+
         try {
-             String filePath = keyboard.readLine();
+              filePath = keyboard.readLine();
             //save the game to the specified file
             GameControl.getSavedGame(filePath);
+
             GameMenuView gmv = new GameMenuView();
             gmv.display();
-        } catch (Exception ex){
-            ErrorView.display(this.getClass().getName(), "Error on Input");
+        } /*catch (Exception ex){
+            ErrorView.display(this.getClass().getName(), "Error on Input");*/
+
+         catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+
         }
+
+
+
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+
     }
 
     private void displayHelpMenu() {
@@ -138,19 +148,30 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-        
+
         //Prompt for and and get the name of the file to save the game
-        this.console.println("\n\n Enter the file path for the file where "
+        this.console.println("\n\nEnter the file path for the file where "
                 + "the game is to be saved ");
+
         // filePath = this.getInput();
         
+
+        String filePath = this.getInput();
+
+
         try {
-             String filePath = keyboard.readLine();
+             filePath = keyboard.readLine();
             //save the game to the specified file
-            GameControl.saveGame(DesertEscape.getCurrentGame(), filePath);
+
+           /* GameControl.saveGame(filePath);
         } catch (Exception ex){
             ErrorView.display(this.getClass().getName(), "Error on Input");
-            //ErrorView.display("MainMenuView", ex.getMessage());
+            //ErrorView.display("MainMenuView", ex.getMessage());*/
+
+            GameControl.saveGame(DesertEscape.getCurrentGame(), filePath);
+        } catch (Exception ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+
         }
     }
 

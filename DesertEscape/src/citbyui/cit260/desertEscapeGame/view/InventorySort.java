@@ -22,13 +22,13 @@ public class InventorySort extends View {
             
             // print tittle and column heading
             out.println("\n\n                Inventory Report                 ");
-            out.printf("%n%-20s%10s%10s", "Description", "Quantity In Stock", "Required Amount");
-            out.printf("%n%-20s%10s%10s", "---------------------------------------------------");
-            
+            out.printf( "%n%-20s%10s%10s", "Description", "Quantity In Stock", "Required Amount");
+            out.printf( "%n%-20s%10s%10s", "---------------------------------------------------");
+            //
              //print the description, the required amount and amount in stock
             for (InventoryItem item : inventory) {
            
-            out.printf("%n%-20s%7d%13.2f", item.getDescription()
+            out.printf("%n%-20s%8d%13.2f", item.getDescription()
                                                        ,item.getQuantityInStock()
                                                     ,item.getRequiredAmount());
         }

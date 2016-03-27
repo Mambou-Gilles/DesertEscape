@@ -15,6 +15,7 @@ import byui.cit260.desertEscapeGame.model.InventoryItem;
 import byui.cit260.desertEscapeGame.model.Location;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import desertescape.DesertEscape;
+import java.io.BufferedReader;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -29,7 +30,8 @@ import java.util.logging.Logger;
  * @author mambou
  */
 public class GameMenuView extends View {
-   
+    protected final BufferedReader keyboard = DesertEscape.getInFile();
+        protected final PrintWriter console = DesertEscape.getOutFile();
 
     public GameMenuView() {
 

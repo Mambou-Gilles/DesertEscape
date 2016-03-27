@@ -94,6 +94,7 @@ public interface ViewInterface {
             return value; // return value entered
 
         }
+    
 
     @Override
     public boolean doAction(String value

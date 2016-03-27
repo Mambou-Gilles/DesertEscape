@@ -23,11 +23,13 @@ import byui.cit260.desertEscapeGame.model.ShopDownTree;
 import citbyui.cit260.desertEscapeGame.view.ErrorView;
 import desertescape.DesertEscape;
 import java.awt.Point;
+import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 
 /**
  *
@@ -35,6 +37,8 @@ import java.io.ObjectOutputStream;
  */
 public class GameControl {
 
+     protected final BufferedReader keyboard = DesertEscape.getInFile();
+        protected final PrintWriter console = DesertEscape.getOutFile();
     public static InventoryItem[] createInventoryList() {
         // Created array(list) of inventory items
         InventoryItem[] inventory = new InventoryItem[6];
@@ -159,7 +163,7 @@ public class GameControl {
 
     }
 
-    public static void saveGame(Game currentGame, String filePath) /*throws GameControlException*/ {
+    public static void saveGame(Game currentGame, String filePath) throws GameControlException {
         
         try(FileOutputStream fops = new FileOutputStream(filePath)){
             ObjectOutputStream output = new ObjectOutputStream(fops);
@@ -167,11 +171,12 @@ public class GameControl {
             output.writeObject(DesertEscape.getCurrentGame());// write game object out to file
             } catch (Exception e) {
                  ErrorView.display("GameControl", e.getMessage());
+                 
                 //throw new GameControlException(e.getMessage());
             }
     }
 
-    public static void getSavedGame(String filePath) /*throws GameControlException*/ {
+    public static void getSavedGame(String filePath) throws GameControlException {
         Game currentGame = null;
         
         try (FileInputStream fips = new FileInputStream(filePath)){
@@ -179,8 +184,8 @@ public class GameControl {
             
             currentGame = (Game)input.readObject();// read the game object from file
             
-            DesertEscape.setCurrentGame(currentGame);
-            DesertEscape.setPlayer(currentGame.getPlayer());
+            //DesertEscape.setCurrentGame(currentGame);
+            //DesertEscape.setPlayer(currentGame.getPlayer());
         }
         catch (Exception e) {
             ErrorView.display("GameControl", e.getMessage());
