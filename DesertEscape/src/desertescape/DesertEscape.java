@@ -30,16 +30,15 @@ public class DesertEscape {
      * @param args the command line arguments
      */
     private static Game currentGame; // = null;
-    private static Player player;  // = null;
-    
+    public static Player player;  // = null;
+
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
-    
+
     private static PrintWriter logFile = null;
-    
+
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
-    
 
     public static PrintWriter getOutFile() {
         return outFile;
@@ -55,7 +54,7 @@ public class DesertEscape {
 
     public static void setInFile(BufferedReader inFile) {
         DesertEscape.inFile = inFile;
-    } 
+    }
 
     public static PrintWriter getLogFile() {
         return logFile;
@@ -64,9 +63,8 @@ public class DesertEscape {
     public static void setLogFile(PrintWriter logFile) {
         DesertEscape.logFile = logFile;
     }
-    
+
     public static void main(String[] args) {
-         
 
         try {
 
@@ -87,28 +85,37 @@ public class DesertEscape {
             mainMenuView.display();
 
             return;
-            
+
         } catch (Throwable e) {
-        
-            System.out.println( "Exception: " + e.toString()
+            // Function required in Lesson 11 to display the errors
+            ErrorView.display("DesertEscape.class", e.getMessage());
+
+            /* To use the ErrorView required in Lesson 11
+            System.out.println("Exception: " + e.toString()
                     + "\nCause:" + e.getCause()
                     + "\nMesssage: " + e.getMessage());
             e.printStackTrace();
+             */
             
         } finally {
             try {
-                if (DesertEscape.inFile != null)  
+                if (DesertEscape.inFile != null) {
                     DesertEscape.inFile.close();
-                 
-                if (DesertEscape.outFile != null)  
+                }
+
+                if (DesertEscape.outFile != null) {
                     DesertEscape.outFile.close();
-                 
-                if (DesertEscape.logFile != null)  
+                }
+
+                if (DesertEscape.logFile != null) {
                     DesertEscape.logFile.close();
-                 
+                }
+
             } catch (IOException ex) {
-                //Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Error closing files");
+                // Function required in Lesson 11 to display the errors
+                ErrorView.display(DesertEscape.class.getName(), ex.getMessage());
+                // Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
+                // System.out.println("Error closing files");
                 return;
             }
         }
@@ -165,7 +172,5 @@ public class DesertEscape {
     public static void setPlayer(Player player) {
         DesertEscape.player = player;
     }
-
-    
 
 }

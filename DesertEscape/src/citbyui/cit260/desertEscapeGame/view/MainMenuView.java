@@ -37,10 +37,11 @@ public class MainMenuView extends View {
                 + "\n----------------------------"
                 + "\n         MAIN MENU"
                 + "\n----------------------------"
+                + "\n  P - Players"
                 + "\n  N - Start New Game"
+                + "\n  S - Save Game"
                 + "\n  R - Resume Saved Game"
                 + "\n  H - How to play the game"
-                + "\n  S - Save Game"
                 + "\n  G - Go to Scenes"
                 + "\n  Q - Quit"
                 + "\n"
@@ -54,6 +55,9 @@ public class MainMenuView extends View {
         value = value.toUpperCase(); // Convert menuOpton to uppercase
 
         switch (value) {
+            case "P": // Players control
+                this.PlayersControl();
+                break;
             case "N": // start new game
                 this.startNewGame();
                 break;
@@ -78,6 +82,13 @@ public class MainMenuView extends View {
         return false;
         }
 
+    private void PlayersControl() {
+        // Call Players Menu
+        PlayersView playersView = new PlayersView();
+        playersView.display();
+        
+    }
+    
     private void startNewGame() {
 
         
@@ -102,8 +113,10 @@ public class MainMenuView extends View {
             //create new Game
             GameControl.createNewGame(DesertEscape.getPlayer());
         } catch (MapControlException ex) {
-            //Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
+            // Function required in Lesson 11 to display the errors
+            ErrorView.display(DesertEscape.class.getName(), ex.getMessage());
+            // Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            // System.out.println(ex.getMessage());
         }
 
         //display the game menu
@@ -178,20 +191,6 @@ public class MainMenuView extends View {
     private void goToScene() {
         SceneView sceneView = new SceneView();
         sceneView.display();
-    }
-
-    public static Player createPlayer(String name) {
-
-        if (name == null) {
-            return null;
-        }
-
-        Player player = new Player();
-        player.setPlayerName(name);
-
-        DesertEscape.setPlayer(player); // save the player
-
-        return player;
     }
 
 }

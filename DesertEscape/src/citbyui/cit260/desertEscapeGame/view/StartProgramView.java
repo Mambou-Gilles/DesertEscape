@@ -75,26 +75,26 @@ public class StartProgramView extends View {
         }
 
         //call createPlayer() control function
-        Player player = null;
+        Player plyrName = null;
         try {
-            player = GameControl.createPlayer(value);
+            plyrName = GameControl.createPlayer(value);
         } catch (GameControlException ex) {
             Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        if (player == null) { // if unsuccesful
+        if (plyrName == null) { // if unsuccesful
             this.console.println("\nError creating the player.");
             return false;
         }
 
         //display next view
-        this.displayNextView(player);
+        this.displayNextView(plyrName);
         return true;
     }
 
-    private void displayNextView(Player player) {
+    private void displayNextView(Player plyrName) {
         this.console.println("\n================================================"
-                + "\n Welcome to Desert Escape *** " + player.getPlayerName() + " ***"
+                + "\n Welcome to Desert Escape *** " + plyrName.getPlayerName() + " ***"
                 + "\n We hope that you have a lot of fun!"
                 + "\n=================================================="
         );

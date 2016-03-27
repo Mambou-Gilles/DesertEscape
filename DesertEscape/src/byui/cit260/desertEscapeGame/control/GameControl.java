@@ -37,8 +37,9 @@ import java.io.PrintWriter;
  */
 public class GameControl {
 
-     protected final BufferedReader keyboard = DesertEscape.getInFile();
-        protected final PrintWriter console = DesertEscape.getOutFile();
+    protected final BufferedReader keyboard = DesertEscape.getInFile();
+    protected final PrintWriter console = DesertEscape.getOutFile();
+
     public static InventoryItem[] createInventoryList() {
         // Created array(list) of inventory items
         InventoryItem[] inventory = new InventoryItem[6];
@@ -92,12 +93,10 @@ public class GameControl {
         return true;
 
     }*/
-
-    public static void createNewGame(Player player) throws MapControlException{
+    public static void createNewGame(Player player) throws MapControlException {
         Game game = new Game();  // create a new game
         DesertEscape.setCurrentGame(game); // save game in DesertEscape
 
-        
         game.setPlayer(player); // save player in the game
 
         //create the inventory list and save in the game
@@ -118,23 +117,21 @@ public class GameControl {
 
         Map map = MapControl.createMap();
         game.setMap(map);
-        
+
         //Map gameMap = new Map();
         //game.setMap(gameMap);
-        
         player.setLocation(map.getLocation(0, 0));
-        
+
         DesertEscape.setCurrentGame(game);
 
         //Move actor to starting position in the map
-        MapControl.moveActorsToStartinglocation(map);
+        //MapControl.moveActorsToStartinglocation(map);
     }
 
     public static Player createPlayer(String name) throws GameControlException {
 
         if (name == null) {
             throw new GameControlException("No name write");
-                    //+ "return null;
         }
 
         Player player = new Player();
@@ -143,6 +140,12 @@ public class GameControl {
         DesertEscape.setPlayer(player); // save the player
 
         return player;
+    }
+
+    public static String namePlayer(Player name) throws GameControlException {
+
+        return name.getPlayerName();
+
     }
 
     static void assignScenesToLocations(Map map, Scene[] scenes) {
@@ -158,42 +161,40 @@ public class GameControl {
         locations[0][6].setScene(scenes[SceneType.cliffs.ordinal()]);
         locations[0][7].setScene(scenes[SceneType.cliffs.ordinal()]);
         locations[0][8].setScene(scenes[SceneType.desert.ordinal()]);
-        
+
         locations[9][9].setScene(scenes[SceneType.pyramids.ordinal()]);
 
     }
 
     public static void saveGame(Game currentGame, String filePath) throws GameControlException {
-        
-        try(FileOutputStream fops = new FileOutputStream(filePath)){
+
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
             ObjectOutputStream output = new ObjectOutputStream(fops);
-            
+
             output.writeObject(DesertEscape.getCurrentGame());// write game object out to file
-            } catch (Exception e) {
-                 ErrorView.display("GameControl", e.getMessage());
-                 
-                //throw new GameControlException(e.getMessage());
-            }
+        } catch (Exception e) {
+            ErrorView.display("GameControl", e.getMessage());
+
+            //throw new GameControlException(e.getMessage());
+        }
     }
 
     public static void getSavedGame(String filePath) throws GameControlException {
         Game currentGame = null;
-        
-        try (FileInputStream fips = new FileInputStream(filePath)){
-            ObjectInputStream input =  new ObjectInputStream(fips);
-            
-            currentGame = (Game)input.readObject();// read the game object from file
-            
+
+        try (FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream input = new ObjectInputStream(fips);
+
+            currentGame = (Game) input.readObject();// read the game object from file
+
             //DesertEscape.setCurrentGame(currentGame);
             //DesertEscape.setPlayer(currentGame.getPlayer());
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             ErrorView.display("GameControl", e.getMessage());
             //throw new GameControlException(e.getMessage());
         }
         // close the output file
         DesertEscape.setCurrentGame(currentGame);// saved in DesertEscape
-    }  
+    }
 
-    
 }

@@ -68,12 +68,10 @@ public interface ViewInterface {
             // Scanner keyboard = new Scanner(System.in); //get infile for keyboard
             String value = ""; //value to be returned
             boolean valid = false; //initialize to not valid
-           
 
             try {
                 while (!valid) { //loop while an invalid is entered
                     this.console.println(this.displayMessage);
-
 
                     // value = keyboard.nextLine();// get next line typed on keyboard
                     value = this.keyboard.readLine();// get next line typed on keyboard
@@ -94,15 +92,13 @@ public interface ViewInterface {
             return value; // return value entered
 
         }
-    
 
-    @Override
-    public boolean doAction(String value
-    ) {
+        @Override
+        public boolean doAction(String value) {
 
-        value = value.toUpperCase();
-        return false;
+            value = value.toUpperCase();
+            return false;
+        }
+
     }
-
-}
 }

@@ -35,9 +35,6 @@ public class Player implements Serializable {
         this.playerTime = playerTime;
     }
 
-    public Player() {
-    }
-
     public Location getLocation() {
         return location;
     }
@@ -46,5 +43,10 @@ public class Player implements Serializable {
         this.location = location;
     }
 
-    
+    public Player() {
+    }    
+
+    public void setLocation(int i, int i0, boolean b, double d) {
+        return;
+    }
 }
