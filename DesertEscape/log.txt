@@ -1,2 +1,0 @@
-PlayerView - java.lang.String cannot be cast to byui.cit260.desertEscapeGame.model.Player
-DesertEscape.class - null

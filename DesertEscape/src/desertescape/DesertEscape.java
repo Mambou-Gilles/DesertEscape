@@ -5,7 +5,7 @@
  */
 package desertescape;
 
-import byui.cit260.desertEscapeGame.exceptions.MapControlException;
+//import byui.cit260.desertEscapeGame.exceptions.MapControlException;
 import byui.cit260.desertEscapeGame.model.Difficulty;
 import byui.cit260.desertEscapeGame.model.Game;
 import byui.cit260.desertEscapeGame.model.Player;
@@ -31,7 +31,7 @@ public class DesertEscape {
     /**
      * @param args the command line arguments
      */
-    private static Game currentGame; // = null;
+    private static Game currentGame; //= null;
     public static Player player;  // = null;
 
     private static PrintWriter outFile = null;

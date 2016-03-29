@@ -90,7 +90,7 @@ public class Map implements Serializable {
             for (int column = 0; column < noOfColumns; column++) {
                 rtn += locations[row][column].getType().name().charAt(0) + "\t";
             }
-            rtn += "";
+            rtn += "\n";
         }
         return rtn;
     }
