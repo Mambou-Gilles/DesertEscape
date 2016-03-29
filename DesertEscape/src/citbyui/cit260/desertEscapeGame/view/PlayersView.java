@@ -31,9 +31,10 @@ public class PlayersView extends View {
                 + "\n#   =========================       #"
                 + "\n#                                   #"
                 + "\n#   LETTER         ACTION           #"
-                + "\n#     S     Save Current Players    #"
+                + "\n#     P     Player Name             #"
+                + "\n#     S     Save Current Player     #"
                 + "\n#     L     Current Players List    #"
-                + "\n#     Q     Quit                    #"
+                + "\n#     Q     Return                  #"
                 + "\n#                                   #"
                 + "\n#####################################"
                 + "\n      Choose your Players Action");
@@ -43,6 +44,9 @@ public class PlayersView extends View {
     public boolean doAction(String value) {
         value = value.toUpperCase(); // Convert menuOpton to uppercase
         switch (value) {
+            case "P": // Sort by Item description
+                this.PlayersControl();
+                break;
             case "S": // Sort by Item description
                 this.SavePlayer(player);
                 break;
@@ -58,6 +62,17 @@ public class PlayersView extends View {
         return false;
     }
 
+    private void PlayersControl() {
+        // Require name
+        StartProgramView startProgramView = new StartProgramView();
+        startProgramView.display();
+
+        // Call Players Menu
+        PlayersView playersView = new PlayersView();
+        playersView.display();
+        
+    }
+    
     private void SavePlayer(Player playerName) {
 
         String pName = DesertEscape.getPlayer().getPlayerName();

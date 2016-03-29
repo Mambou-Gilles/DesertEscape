@@ -33,21 +33,26 @@ public class MainMenuView extends View {
 
         // displayPromptMessage = "Please enter any menu option ";       
         //this.displayMessage = "\nPlease enter menu option";
-        super("\n"
-                + "\n----------------------------"
-                + "\n         MAIN MENU"
-                + "\n----------------------------"
-                + "\n  P - Players"
-                + "\n  N - Start New Game"
-                + "\n  S - Save Game"
-                + "\n  R - Resume Saved Game"
-                + "\n  H - How to play the game"
-                + "\n  G - Go to Scenes"
-                + "\n  Q - Quit"
+        super("\n*****************************************************************"
+                + "\n*                                                               *"
+                + "\n*   DDEEEE\\\\         DDD  EEEE  SSS  EEEE RRR  TTTTT            *"
+                + "\n*   DD     \\\\        D  D E    S     E    R  R   T              *"
+                + "\n*   DDEE ===>>       D  D EEE   SS   EEE  RRR    T              *"
+                + "\n*   DD     //        D  D E       S  E    R  R   T              *"
+                + "\n*   DDEEEE//         DDD  EEDE SSS   EEEE R  R   T              *"
+                + "\n*                                  ||                           *"
+                + "\n*                                   = = = >>>>> E S C A P E     *"
+                + "\n*                                                               *"
+                + "\n*****************************************************************" 
+                + "\n                    MAIN MENU"
+                + "\n-----------------------------------------------------------------"
+                + "\n               N - Start New Game"
+                + "\n               S - Save Game"
+                + "\n               R - Resume Saved Game"
+                + "\n               H - How to play the game"
+                + "\n               Q - Quit"
                 + "\n"
-                + "\n  Please Ente Your Menu Selection Below"
-                + "\n  "
-                + "\n----------------------------");
+                + "\n           Please Enter Your Menu Selection: ");
     }
 
     @Override
@@ -55,9 +60,6 @@ public class MainMenuView extends View {
         value = value.toUpperCase(); // Convert menuOpton to uppercase
 
         switch (value) {
-            case "P": // Players control
-                this.PlayersControl();
-                break;
             case "N": // start new game
                 this.startNewGame();
                 break;
@@ -70,9 +72,6 @@ public class MainMenuView extends View {
             case "S": // save the game
                 this.saveGame();
                 break;
-            case "G": // Go to Scenes
-                this.goToScene();
-                break;
             case "Q": // quit the game
                 break;
             default:
@@ -82,13 +81,6 @@ public class MainMenuView extends View {
         return false;
         }
 
-    private void PlayersControl() {
-        // Call Players Menu
-        PlayersView playersView = new PlayersView();
-        playersView.display();
-        
-    }
-    
     private void startNewGame() {
 
         

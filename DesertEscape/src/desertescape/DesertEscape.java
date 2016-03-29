@@ -11,8 +11,9 @@ import byui.cit260.desertEscapeGame.model.Game;
 import byui.cit260.desertEscapeGame.model.Player;
 import citbyui.cit260.desertEscapeGame.view.ErrorView;
 import citbyui.cit260.desertEscapeGame.view.GameMenuView;
+import citbyui.cit260.desertEscapeGame.view.IntroductionView;
 import citbyui.cit260.desertEscapeGame.view.MainMenuView;
-import citbyui.cit260.desertEscapeGame.view.StartProgramView;
+//import citbyui.cit260.desertEscapeGame.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -40,45 +41,25 @@ public class DesertEscape {
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
 
-    public static PrintWriter getOutFile() {
-        return outFile;
-    }
-
-    public static void setOutFile(PrintWriter outFile) {
-        DesertEscape.outFile = outFile;
-    }
-
-    public static BufferedReader getInFile() {
-        return inFile;
-    }
-
-    public static void setInFile(BufferedReader inFile) {
-        DesertEscape.inFile = inFile;
-    }
-
-    public static PrintWriter getLogFile() {
-        return logFile;
-    }
-
-    public static void setLogFile(PrintWriter logFile) {
-        DesertEscape.logFile = logFile;
-    }
-
     public static void main(String[] args) {
-
+        
         try {
-
+            
             // Open character stream files for input and output 
             DesertEscape.inFile = new BufferedReader(new InputStreamReader(System.in));
             DesertEscape.outFile = new PrintWriter(System.out, true);
-
+            
             // Open log file
             String filePath = "log.txt";
             DesertEscape.logFile = new PrintWriter(filePath);
 
+            //create IntroducionView() 
+            IntroductionView introductionView = new IntroductionView();
+            introductionView.display();
+
             //create StartProgramView()rig and display the start program view
-            StartProgramView startProgramView = new StartProgramView();
-            startProgramView.display();
+            //StartProgramView startProgramView = new StartProgramView();
+            //startProgramView.display();
 
             //create MainMenuProgramView() rig and display the main menu view
             MainMenuView mainMenuView = new MainMenuView();
@@ -96,7 +77,6 @@ public class DesertEscape {
                     + "\nMesssage: " + e.getMessage());
             e.printStackTrace();
              */
-            
         } finally {
             try {
                 if (DesertEscape.inFile != null) {
@@ -128,12 +108,12 @@ public class DesertEscape {
             startProgramView.display();
             );                    
         }*/
- /*try {
+        /*try {
                 mainMenuView = new MainMenuView();
             } catch (MapControlException ex) {
                 Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
             }*/
- /*//Class instance variable Player 
+ /*     //Class instance variable Player 
         Player playerOne = new Player();
         playerOne.setPlayerName("Gilles");
         playerOne.setPlayerTime(5);
@@ -171,6 +151,30 @@ public class DesertEscape {
 
     public static void setPlayer(Player player) {
         DesertEscape.player = player;
+    }
+
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        DesertEscape.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        DesertEscape.inFile = inFile;
+    }
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        DesertEscape.logFile = logFile;
     }
 
 }
