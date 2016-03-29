@@ -16,9 +16,10 @@ import java.util.Objects;
  */
 public class Map implements Serializable {
 
-    public static final int noOfRows = 5;
+    public static  final int noOfRows = 5;
     public static final int noOfColumns = 5;
-
+ //public static final int noOfColumns = 5;
+    
     private Location[][] locations;
     private String mapString;
     private int noOfRow;
@@ -38,8 +39,9 @@ public class Map implements Serializable {
                 "\n number of rows and columns must be > zero");
             return;
         }
-        /*this.noOfRows = noOfRows;
-        this.noOfColumns = noOfColumns;*/
+        
+        //this.noOfRows = noOfRows;
+        //this.noOfColumns = noOfColumns;
 
         //create 2-D array for location object
         this.locations = new Location[noOfRows][noOfColumns];

@@ -83,7 +83,9 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
 
-        
+        //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
 
         // fuel use control
         /*FuelUseVolume fuelUse = new FuelUseVolume();
@@ -112,8 +114,8 @@ public class MainMenuView extends View {
         }
 
         //display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
+       // GameMenuView gameMenu = new GameMenuView();
+       // gameMenu.display();
 
     }
 

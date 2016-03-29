@@ -34,6 +34,7 @@ public class IntroductionView extends View{
                 + "\n* Find the resources needed to build the time machine and       *"
                 + "\n* save the earth.                                               *"
                 + "\n*                                                               *"
+                + "\n                                                                *"
                 + "\n*            Good luck and enjoy the adventure                  *"
                 + "\n*                                                               *"
                 + "\n*****************************************************************");

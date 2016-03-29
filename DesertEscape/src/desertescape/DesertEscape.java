@@ -13,6 +13,7 @@ import citbyui.cit260.desertEscapeGame.view.ErrorView;
 import citbyui.cit260.desertEscapeGame.view.GameMenuView;
 import citbyui.cit260.desertEscapeGame.view.IntroductionView;
 import citbyui.cit260.desertEscapeGame.view.MainMenuView;
+import citbyui.cit260.desertEscapeGame.view.StartProgramView;
 //import citbyui.cit260.desertEscapeGame.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -54,23 +55,30 @@ public class DesertEscape {
             DesertEscape.logFile = new PrintWriter(filePath);
 
             //create IntroducionView() 
-            IntroductionView introductionView = new IntroductionView();
-            introductionView.display();
+            //IntroductionView introductionView = new IntroductionView();
+            //introductionView.display();
 
             //create StartProgramView()rig and display the start program view
-            //StartProgramView startProgramView = new StartProgramView();
-            //startProgramView.display();
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.display();
 
             //create MainMenuProgramView() rig and display the main menu view
-            MainMenuView mainMenuView = new MainMenuView();
-            mainMenuView.display();
+            MainMenuView mmv = new MainMenuView();
+            mmv.display();
 
+            //create GameMenuView() rig and display the main menu view
+            //GameMenuView gmv = new GameMenuView();
+            //gmv.display();
+            
             return;
 
-        } catch (Throwable e) {
+        } catch (Throwable e) { //Throwable e
             // Function required in Lesson 11 to display the errors
-            ErrorView.display("DesertEscape.class", e.getMessage());
-
+            System.out.println("Exception: " + e.toString()+
+                               "\nCause: " + e.getCause() +
+                               "\nMessage: " + e.getMessage());
+            e.printStackTrace();
+//DesertEscape.class
             /* To use the ErrorView required in Lesson 11
             System.out.println("Exception: " + e.toString()
                     + "\nCause:" + e.getCause()
@@ -93,9 +101,9 @@ public class DesertEscape {
 
             } catch (IOException ex) {
                 // Function required in Lesson 11 to display the errors
-                ErrorView.display(DesertEscape.class.getName(), ex.getMessage());
+                //ErrorView.display(DesertEscape.class.getName(), ex.getMessage());
                 // Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
-                // System.out.println("Error closing files");
+                System.out.println("Error closing files");
                 return;
             }
         }
