@@ -7,21 +7,17 @@ package citbyui.cit260.desertEscapeGame.view;
 
 import byui.cit260.desertEscapeGame.exceptions.MovementControllerException;
 import byui.cit260.desertEscapeGame.control.MovementController;
-
 import byui.cit260.desertEscapeGame.model.Game;
 import byui.cit260.desertEscapeGame.model.InventoryItem;
-
 //import byui.cit260.desertEscapeGame.model.InventoryItem;
 import byui.cit260.desertEscapeGame.model.Location;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import desertescape.DesertEscape;
 import java.io.BufferedReader;
-
-import java.io.FileNotFoundException;
+//import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 
 
@@ -47,13 +43,10 @@ public class GameMenuView extends View {
                 + "\n  E - Move person to East"
                 + "\n  S - Move person to South"
                 + "\n  W - Move person to West"
-
                 + "\n  I - View inventory list with costs"
                 + "\n  P - Print inventory list"
                 + "\n  Z - Sort inventory list"
-
                 + "\n  I - Inventory activities"
-
                 + "\n  R - Estimate the resource needed"
                 + "\n  H - Help"
                 + "\n  Q - Quit"
@@ -68,6 +61,9 @@ public class GameMenuView extends View {
         value = value.toUpperCase(); // Convert menuOpton to uppercase
 
         switch (value) {
+            case "V": // view inventory Menu
+                this.InventoryMenu();
+                break;
             case "M": // travel to new location
                 this.Map();
                 break;

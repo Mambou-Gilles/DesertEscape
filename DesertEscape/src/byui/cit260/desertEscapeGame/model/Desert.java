@@ -44,43 +44,4 @@ public class Desert implements Serializable{
     public void setResources(String resources) {
         this.resources = resources;
     }
-
-    @Override
-    public String toString() {
-        return "Desert{" + "description=" + description + ", amountAvailable=" + amountAvailable + ", resources=" + resources + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.description);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.amountAvailable) ^ (Double.doubleToLongBits(this.amountAvailable) >>> 32));
-        hash = 97 * hash + Objects.hashCode(this.resources);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Desert other = (Desert) obj;
-        if (Double.doubleToLongBits(this.amountAvailable) != Double.doubleToLongBits(other.amountAvailable)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.resources, other.resources)) {
-            return false;
-        }
-        return true;
-    }
-    
-}
+}    

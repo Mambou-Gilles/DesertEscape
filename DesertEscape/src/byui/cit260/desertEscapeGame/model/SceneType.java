@@ -5,11 +5,13 @@
  */
 package byui.cit260.desertEscapeGame.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author mambou
  */
-public enum SceneType  {
+public enum SceneType{
     start,
     alienCamp,
     caves,

@@ -6,7 +6,6 @@
 package byui.cit260.desertEscapeGame.model;
 
 import desertescape.DesertEscape;
-import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.io.Serializable;
 
@@ -16,8 +15,7 @@ import java.io.Serializable;
  */
 public class ShopDownTree implements Serializable {
     private String description;
-    protected final BufferedReader keyboard = DesertEscape.getInFile();
-        protected final PrintWriter console = DesertEscape.getOutFile();
+            protected final PrintWriter console = DesertEscape.getOutFile();
     
     public ShopDownTree(){
         this.description = description;

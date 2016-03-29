@@ -43,45 +43,6 @@ public class Villain implements Serializable{
 
     public void setKind(String kind) {
         this.kind = kind;
-    }
-
-    @Override
-    public String toString() {
-        return "Villain{" + "name=" + name + ", description=" + description + ", kind=" + kind + '}';
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 17 * hash + Objects.hashCode(this.name);
-        hash = 17 * hash + Objects.hashCode(this.description);
-        hash = 17 * hash + Objects.hashCode(this.kind);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Villain other = (Villain) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        if (!Objects.equals(this.kind, other.kind)) {
-            return false;
-        }
-        return true;
-    }
-    
+    }   
     
 }

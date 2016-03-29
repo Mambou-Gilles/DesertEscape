@@ -6,7 +6,7 @@
 package byui.cit260.desertEscapeGame.control;
 
 import byui.cit260.desertEscapeGame.exceptions.GameControlException;
-import byui.cit260.desertEscapeGame.exceptions.MapControlException;
+//import byui.cit260.desertEscapeGame.exceptions.MapControlException;
 import byui.cit260.desertEscapeGame.model.Actor;
 import byui.cit260.desertEscapeGame.model.BuildTimeMachine;
 import byui.cit260.desertEscapeGame.model.FillPit;
@@ -40,7 +40,7 @@ public class GameControl {
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
 
-    public static InventoryItem[] createInventoryList() {
+    public static InventoryItem[] createInventoryList() throws GameControlException {
         // Created array(list) of inventory items
         InventoryItem[] inventory = new InventoryItem[6];
 
@@ -80,6 +80,7 @@ public class GameControl {
         shirt.setRequiredAmount(0);
         inventory[Item.shirt.ordinal()] = shirt;
 
+         
         return inventory;
     }
 
@@ -93,7 +94,7 @@ public class GameControl {
         return true;
 
     }*/
-    public static void createNewGame(Player player) throws MapControlException {
+    public static void createNewGame(Player player) throws GameControlException {
         Game game = new Game();  // create a new game
         DesertEscape.setCurrentGame(game); // save game in DesertEscape
 
@@ -131,7 +132,7 @@ public class GameControl {
     public static Player createPlayer(String name) throws GameControlException {
 
         if (name == null) {
-            throw new GameControlException("No name write");
+            throw new GameControlException("No name written");
         }
 
         Player player = new Player();

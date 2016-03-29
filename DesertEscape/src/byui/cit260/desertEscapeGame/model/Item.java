@@ -5,6 +5,8 @@
  */
 package byui.cit260.desertEscapeGame.model;
 
+import java.io.Serializable;
+
 
 /**
  *

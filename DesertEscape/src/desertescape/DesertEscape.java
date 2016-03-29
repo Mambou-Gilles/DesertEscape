@@ -6,6 +6,7 @@
 package desertescape;
 
 //import byui.cit260.desertEscapeGame.exceptions.MapControlException;
+import byui.cit260.desertEscapeGame.exceptions.GameControlException;
 import byui.cit260.desertEscapeGame.model.Difficulty;
 import byui.cit260.desertEscapeGame.model.Game;
 import byui.cit260.desertEscapeGame.model.Player;
@@ -31,8 +32,8 @@ public class DesertEscape {
     /**
      * @param args the command line arguments
      */
-    private static Game currentGame; //= null;
-    public static Player player;  // = null;
+    private static Game currentGame = null;
+    public static Player player = null;
 
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
@@ -67,8 +68,8 @@ public class DesertEscape {
             mmv.display();
 
             //create GameMenuView() rig and display the main menu view
-            //GameMenuView gmv = new GameMenuView();
-            //gmv.display();
+            GameMenuView gmv = new GameMenuView();
+            gmv.display();
             
             return;
 
@@ -77,7 +78,7 @@ public class DesertEscape {
             System.out.println("Exception: " + e.toString()+
                                "\nCause: " + e.getCause() +
                                "\nMessage: " + e.getMessage());
-            e.printStackTrace();
+            //e.printStackTrace();
 //DesertEscape.class
             /* To use the ErrorView required in Lesson 11
             System.out.println("Exception: " + e.toString()

@@ -7,14 +7,14 @@ package citbyui.cit260.desertEscapeGame.view;
 
 import byui.cit260.desertEscapeGame.control.GameControl;
 import byui.cit260.desertEscapeGame.exceptions.GameControlException;
-import byui.cit260.desertEscapeGame.exceptions.MapControlException;
+//import byui.cit260.desertEscapeGame.exceptions.MapControlException;
 import byui.cit260.desertEscapeGame.model.Player;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import desertescape.DesertEscape;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+//import java.util.logging.Level;
+//import java.util.logging.Logger;
 
 /**
  *
@@ -29,8 +29,8 @@ public class MainMenuView extends View {
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
 
-    public MainMenuView() throws MapControlException {
-
+    public MainMenuView()  {
+         
         // displayPromptMessage = "Please enter any menu option ";       
         //this.displayMessage = "\nPlease enter menu option";
         super("\n*****************************************************************"
@@ -106,10 +106,9 @@ public class MainMenuView extends View {
         try {
             //create new Game
             GameControl.createNewGame(DesertEscape.getPlayer());
-        } catch (MapControlException ex) {
-            // Function required in Lesson 11 to display the errors
-            ErrorView.display(DesertEscape.class.getName(), ex.getMessage());
-            // Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (GameControlException ge) {
+            
+            ErrorView.display(DesertEscape.class.getName(), ge.getMessage());
             // System.out.println(ex.getMessage());
         }
 
@@ -133,8 +132,8 @@ public class MainMenuView extends View {
 
             GameMenuView gmv = new GameMenuView();
             gmv.display();
-        } /*catch (Exception ex){
-            ErrorView.display(this.getClass().getName(), "Error on Input");*/
+        } 
+           // ErrorView.display(this.getClass().getName(), "Error on Input");
 
          catch (Exception ex) {
             ErrorView.display("MainMenuView", ex.getMessage());
