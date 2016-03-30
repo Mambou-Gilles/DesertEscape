@@ -5,17 +5,15 @@
  */
 package desertescape;
 
-//import byui.cit260.desertEscapeGame.exceptions.MapControlException;
-import byui.cit260.desertEscapeGame.exceptions.GameControlException;
+import byui.cit260.desertEscapeGame.exceptions.MapControlException;
+//import byui.cit260.desertEscapeGame.exceptions.GameControlException;
 import byui.cit260.desertEscapeGame.model.Difficulty;
 import byui.cit260.desertEscapeGame.model.Game;
 import byui.cit260.desertEscapeGame.model.Player;
 import citbyui.cit260.desertEscapeGame.view.ErrorView;
 import citbyui.cit260.desertEscapeGame.view.GameMenuView;
-import citbyui.cit260.desertEscapeGame.view.IntroductionView;
 import citbyui.cit260.desertEscapeGame.view.MainMenuView;
 import citbyui.cit260.desertEscapeGame.view.StartProgramView;
-//import citbyui.cit260.desertEscapeGame.view.StartProgramView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,8 +30,8 @@ public class DesertEscape {
     /**
      * @param args the command line arguments
      */
-    private static Game currentGame = null;
-    public static Player player = null;
+    private static Game currentGame; // = null;
+    private static Player player; // = null;
 
     private static PrintWriter outFile = null;
     private static BufferedReader inFile = null;
@@ -44,42 +42,40 @@ public class DesertEscape {
     protected final PrintWriter console = DesertEscape.getOutFile();
 
     public static void main(String[] args) {
-        
+
         try {
-            
+
             // Open character stream files for input and output 
             DesertEscape.inFile = new BufferedReader(new InputStreamReader(System.in));
             DesertEscape.outFile = new PrintWriter(System.out, true);
-            
+
             // Open log file
             String filePath = "log.txt";
             DesertEscape.logFile = new PrintWriter(filePath);
-
-            //create IntroducionView() 
-            //IntroductionView introductionView = new IntroductionView();
-            //introductionView.display();
 
             //create StartProgramView()rig and display the start program view
             StartProgramView startProgramView = new StartProgramView();
             startProgramView.display();
 
             //create MainMenuProgramView() rig and display the main menu view
-            MainMenuView mmv = new MainMenuView();
-            mmv.display();
-
+            MainMenuView mainMenuView = new MainMenuView();
+            mainMenuView.display();
+                        
             //create GameMenuView() rig and display the main menu view
-            GameMenuView gmv = new GameMenuView();
-            gmv.display();
-            
+            //GameMenuView gmv = new GameMenuView();
+            //gmv.display();
+
             return;
 
         } catch (Throwable e) { //Throwable e
             // Function required in Lesson 11 to display the errors
-            System.out.println("Exception: " + e.toString()+
-                               "\nCause: " + e.getCause() +
-                               "\nMessage: " + e.getMessage());
+            ErrorView.display(DesertEscape.class.getName(), e.getMessage());
+
+            //System.out.println("Exception: " + e.toString()+
+            //                   "\nCause: " + e.getCause() +
+            //                   "\nMessage: " + e.getMessage());
             //e.printStackTrace();
-//DesertEscape.class
+            //DesertEscape.class
             /* To use the ErrorView required in Lesson 11
             System.out.println("Exception: " + e.toString()
                     + "\nCause:" + e.getCause()
@@ -117,7 +113,7 @@ public class DesertEscape {
             startProgramView.display();
             );                    
         }*/
-        /*try {
+ /*try {
                 mainMenuView = new MainMenuView();
             } catch (MapControlException ex) {
                 Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
@@ -142,7 +138,7 @@ public class DesertEscape {
             mainMenuView = new MainMenuView();
         } catch (MapControlException ex) {
             Logger.getLogger(DesertEscape.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    }
         mainMenuView.display();*/
     }
 

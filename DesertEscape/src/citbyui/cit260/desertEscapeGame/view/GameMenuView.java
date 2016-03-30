@@ -16,18 +16,17 @@ import desertescape.DesertEscape;
 import java.io.BufferedReader;
 //import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-//import java.util.logging.Level;
-//import java.util.logging.Logger;
-
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author mambou
  */
 public class GameMenuView extends View {
+
     protected final BufferedReader keyboard = DesertEscape.getInFile();
-        protected final PrintWriter console = DesertEscape.getOutFile();
+    protected final PrintWriter console = DesertEscape.getOutFile();
 
     public GameMenuView() {
 
@@ -36,18 +35,16 @@ public class GameMenuView extends View {
                 + "\n     G A M E   M E N U "
                 + "\n----------------------------"
                 + "\n  M - View Map"
-                + "\n  A - View list of actors"
-                + "\n  T - View time machine status"
                 + "\n  L - View content of locations"
                 + "\n  N - Move person to North"
                 + "\n  E - Move person to East"
                 + "\n  S - Move person to South"
                 + "\n  W - Move person to West"
+                + "\n  V - Inventory menu"
                 + "\n  I - View inventory list with costs"
                 + "\n  P - Print inventory list"
                 + "\n  Z - Sort inventory list"
                 + "\n  I - Inventory activities"
-                + "\n  R - Estimate the resource needed"
                 + "\n  H - Help"
                 + "\n  Q - Quit"
                 + "\n"
@@ -61,17 +58,8 @@ public class GameMenuView extends View {
         value = value.toUpperCase(); // Convert menuOpton to uppercase
 
         switch (value) {
-            case "V": // view inventory Menu
-                this.InventoryMenu();
-                break;
             case "M": // travel to new location
                 this.Map();
-                break;
-            case "A": // View list of actors
-                this.Actors();
-                break;
-            case "T": // View time machine status
-                this.displayTimeMachineStatus();
                 break;
             case "L": // View content of locations
                 this.ContentLocation();
@@ -88,7 +76,9 @@ public class GameMenuView extends View {
             case "W": // Move person to New location
                 this.MoveWest();
                 break;
-
+            case "V": // view inventory Menu
+                this.InventoryMenu();
+                break;
             case "I": // View inventory list with costs
                 this.ViewInventory();
                 break;
@@ -97,9 +87,6 @@ public class GameMenuView extends View {
                 break;
             case "Z": // Sorted inventory list
                 this.SortInventory();
-                break;
-            case "R": // Estimate the resource needed
-                this.displayEstimatedResource();
                 break;
             case "H": // View help
                 this.displayHelp();
@@ -113,21 +100,12 @@ public class GameMenuView extends View {
         return false;
     }
 
-    private void InventoryMenu() {
-
-        InventoryMenu inventoryMenu = new InventoryMenu();
-        inventoryMenu.display();
-
-    }
-
     private void Map() {
         this.console.println(DesertEscape.getCurrentGame().getMap().getMapString());
-
 
     }
 
     void ViewInventory() {
-
         InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
 
         this.console.println("\tList of Inventory Items");
@@ -142,32 +120,14 @@ public class GameMenuView extends View {
     }
 
     private void SortInventory() {
-
         InventorySort inventorySortItem = new InventorySort();
         inventorySortItem.display();
 
-
-    }
-
-    private void Actors() {
-        this.console.println("\n *** viewActors stub function called ***");
     }
 
     private void ContentLocation() {
         Location lc = DesertEscape.getCurrentGame().getPlayer().getLocation();
         this.console.println("You are at: (" + lc.getRow() + "," + lc.getColumn() + ")");
-    }
-
-    private void displayEstimatedResource() {
-        this.console.println("\n *** viewEstimatedResourceNeeded stub function called ***");
-    }
-
-    private void displayHelp() {
-        this.console.println("\n *** viewhelp stub function called ***");
-    }
-
-    private void displayTimeMachineStatus() {
-        this.console.println("\n *** viewTimeMachineStatus stub function called ***");
     }
 
     public void MoveNorth() {
@@ -224,17 +184,27 @@ public class GameMenuView extends View {
         }*/
     }
 
+    private void InventoryMenu() {
+        InventoryMenu inventoryMenu = new InventoryMenu();
+        inventoryMenu.display();
+
+    }
+
     private void PrintReport() {
         this.console.println("\n Enter the file path  of where the report is to be printed.");
-        
+
         String filepath = this.getInput();
-       
+
         InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
         try {
-        InventorySort.InventoryPrint(inventory, filepath);
-    } catch (Exception e) {
-        ErrorView.display("GameMenuView", e.getMessage());
+            InventorySort.InventoryPrint(inventory, filepath);
+        } catch (Exception e) {
+            ErrorView.display("GameMenuView", e.getMessage());
+        }
     }
+
+    private void displayHelp() {
+        this.console.println("\n *** viewhelp stub function called ***");
     }
 
 }
