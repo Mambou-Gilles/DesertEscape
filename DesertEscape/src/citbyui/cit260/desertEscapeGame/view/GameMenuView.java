@@ -105,7 +105,7 @@ public class GameMenuView extends View {
                 this.displayHelp();
                 break;
             case "Q": // quit the game
-                break;
+                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
