@@ -175,7 +175,7 @@ public class GameControl {
             output.writeObject(DesertEscape.getCurrentGame());// write game object out to file
         } catch (Exception e) {
             //ErrorView.display("MainMenuView", e.getMessage());
-            ErrorView.display("GameControl", e.getMessage());
+            //ErrorView.display("GameControl", e.getMessage());
             
         }
     }
@@ -192,7 +192,7 @@ public class GameControl {
               DesertEscape.setPlayer(currentGame.getPlayer());
         } catch (Exception e) {
             //ErrorView.display("MainMenuView", e.getMessage());
-            ErrorView.display("GameControl", e.getMessage());
+            //ErrorView.display("GameControl", e.getMessage());
             //throw new GameControlException(e.getMessage());
         }
         

@@ -7,7 +7,7 @@ package citbyui.cit260.desertEscapeGame.view;
 
 import byui.cit260.desertEscapeGame.control.GameControl;
 import byui.cit260.desertEscapeGame.exceptions.GameControlException;
-//import byui.cit260.desertEscapeGame.exceptions.MapControlException;
+import byui.cit260.desertEscapeGame.exceptions.MapControlException;
 import byui.cit260.desertEscapeGame.model.Player;
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import desertescape.DesertEscape;
@@ -25,12 +25,11 @@ public class MainMenuView extends View {
     private String displayMessage = "";
     private String displayMenu = "";
 
-    
     protected final BufferedReader keyboard = DesertEscape.getInFile();
     protected final PrintWriter console = DesertEscape.getOutFile();
 
-    public MainMenuView()  {
-         
+    public MainMenuView() {
+
         // displayPromptMessage = "Please enter any menu option ";       
         //this.displayMessage = "\nPlease enter menu option";
         super("\n*****************************************************************"
@@ -43,7 +42,7 @@ public class MainMenuView extends View {
                 + "\n*                                  ||                           *"
                 + "\n*                                   = = = >>>>> E S C A P E     *"
                 + "\n*                                                               *"
-                + "\n*****************************************************************" 
+                + "\n*****************************************************************"
                 + "\n                    MAIN MENU"
                 + "\n-----------------------------------------------------------------"
                 + "\n               N - Start New Game"
@@ -63,14 +62,14 @@ public class MainMenuView extends View {
             case "N": // start new game
                 this.startNewGame();
                 break;
+            case "S": // save the game
+                this.saveGame();
+                break;
             case "R": // resume the game
                 this.resumeSavedGame();
                 break;
             case "H": // dislay help menu
                 this.displayHelpMenu();
-                break;
-            case "S": // save the game
-                this.saveGame();
                 break;
             case "Q": // quit the game
                 return true;
@@ -79,7 +78,7 @@ public class MainMenuView extends View {
                         "\n*** Invalid selection *** Try again");
         }
         return false;
-        }
+    }
 
     private void startNewGame() {
 
@@ -98,7 +97,6 @@ public class MainMenuView extends View {
         } catch (byui.cit.desertEscapeGame.exceptions.MapControlException ex) {
             //Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-
         try {
             //create new Game
             GameControl.createNewGame(DesertEscape.getPlayer());
@@ -106,15 +104,14 @@ public class MainMenuView extends View {
         GameMenuView gameMenu = new GameMenuView();
         gameMenu.display();
         } catch (GameControlException ge) {
-            
+
             ErrorView.display(DesertEscape.class.getName(), ge.getMessage());
             // System.out.println(ex.getMessage());
         }
 
         //display the game menu
-       // GameMenuView gameMenu = new GameMenuView();
-       // gameMenu.display();
-
+        // GameMenuView gameMenu = new GameMenuView();
+        // gameMenu.display();
     }
 
     private void resumeSavedGame() {
@@ -134,7 +131,7 @@ public class MainMenuView extends View {
         gameMenu.display();
            
         } catch (Exception ex) {
-           ErrorView.display(this.getClass().getName(), "Error on input");
+           ErrorView.display(this.getClass().getName(), "Error on input. Enter the correct file name");
 
         }
 
@@ -158,7 +155,7 @@ public class MainMenuView extends View {
             //save the game to the specified file               
             GameControl.saveGame(DesertEscape.getCurrentGame(), filePath);
         } catch (Exception ex) {
-            ErrorView.display(this.getClass().getName(), "Error on input");
+            ErrorView.display(this.getClass().getName(), "Error on input. Enter the correct file name");
 
         }
     }

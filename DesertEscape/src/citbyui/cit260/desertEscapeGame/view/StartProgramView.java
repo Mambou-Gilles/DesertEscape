@@ -32,6 +32,8 @@ public class StartProgramView extends View {
         // this.displayPromptMessage = "\nPlease enter your name";
         super("\n*****************************************************************"
                 + "\n*                                                               *"
+                + "\n*                WELCOME TO DESERT ESCAPE GAME                  *"
+                + "\n*                                                               *"
                 + "\n*   This is Nicolas Williams Desert Escape Game                 *"
                 + "\n* In this game you will take the role of Nicolas Williams       *"
                 + "\n* who was born on earth in a distant future                     *"

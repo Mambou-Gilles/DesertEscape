@@ -5,7 +5,10 @@
  */
 package citbyui.cit260.desertEscapeGame.view;
 
+import byui.cit260.desertEscapeGame.exceptions.GameControlException;
 import byui.cit260.desertEscapeGame.model.InventoryItem;
+
+
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import citbyui.cit260.desertEscapeGame.view.GameMenuView;
 import desertescape.DesertEscape;
@@ -17,15 +20,21 @@ import java.io.PrintWriter;
  */
 public class InventorySort extends View {
 
-    static void InventoryPrint(InventoryItem[] inventory, String filepath) {
+    static void InventoryPrint(InventoryItem[] inventory, String filepath) throws GameControlException {  
+       
+        
         try (PrintWriter out = new PrintWriter(filepath)){
             
-            // print tittle and column heading
+           
+        
+            
+            // print title and column heading
             out.println("\n\n                Inventory Report                 ");
             out.printf( "%n%-20s%10s%10s", "Description", "Quantity In Stock", "Required Amount");
             out.printf( "%n%-20s%10s%10s", "---------------------------------------------------");
-            //
-             //print the description, the required amount and amount in stock
+             
+
+//print the description, the required amount and amount in stock
             for (InventoryItem item : inventory) {
            
             out.printf("%n%-20s%8d%13.2f", item.getDescription()
@@ -34,8 +43,10 @@ public class InventorySort extends View {
         }
            
         } catch (Exception ex) {
-           System.out.println("I/O Error: " + ex.getMessage());
+           //System.out.println("GameMenuView" + ex.getMessage());
+           //throw new GameControlException(ex.getMessage());
         }
+        
     }
 
     private String message = "";
