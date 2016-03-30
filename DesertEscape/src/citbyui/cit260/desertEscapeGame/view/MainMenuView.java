@@ -83,11 +83,7 @@ public class MainMenuView extends View {
 
     private void startNewGame() {
 
-        //display the game menu
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.display();
-
-        // fuel use control
+               // fuel use control
         /*FuelUseVolume fuelUse = new FuelUseVolume();
         try {
             fuelUse.fuelUse();
@@ -106,6 +102,9 @@ public class MainMenuView extends View {
         try {
             //create new Game
             GameControl.createNewGame(DesertEscape.getPlayer());
+            //display the game menu
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
         } catch (GameControlException ge) {
             
             ErrorView.display(DesertEscape.class.getName(), ge.getMessage());
@@ -154,19 +153,13 @@ public class MainMenuView extends View {
     }
 
     private void saveGame() {
-
-        //Prompt for and and get the name of the file to save the game
+//Prompt for and and get the name of the file to save the game
         this.console.println("\n\nEnter the file path for the file where "
                 + "the game is to be saved ");
-
-        // filePath = this.getInput();
         
-
-        String filePath = this.getInput();
-
-
         try {
-             filePath = keyboard.readLine();
+            //String filePath = this.getInput();
+             String filePath = keyboard.readLine();
             //save the game to the specified file
 
            /* GameControl.saveGame(filePath);
