@@ -104,35 +104,43 @@ public class InventorySort extends View {
         this.console.println("Items ordered by Description");
         this.console.println(String.format("%1$10s%2$10s%3$15s", "Description", "In Stock", "Requirement"));
 
-        while (!breaked) {
-            for (InventoryItem item1 : inventory) {
-                for (InventoryItem item2 : inventory) {
-                    if (item2.getDescription().compareTo(item1.getDescription()) > 0) {
-                        tempDesc = item1.getDescription();
-                        tempSotck = item1.getQuantityInStock();
-                        tempReq = item1.getRequiredAmount();
-                        item1.setDescription(item2.getDescription());
-                        item1.setQuantityInStock(item2.getQuantityInStock());
-                        item1.setRequiredAmount(item2.getRequiredAmount());
-                        item2.setDescription(tempDesc);
-                        item2.setQuantityInStock(tempSotck);
-                        item2.setRequiredAmount(tempReq);
-                        breaked = true;
-                        break;
-                    } else {
-                        breaked = false;
-                    }
-                }
-            }
-            if (breaked) {
-                breaked = false;
-                break;
-            } 
-            
-        }
+//        while (!breaked) {
+//            for (InventoryItem item1 : inventory) {
+//                for (InventoryItem item2 : inventory) {
+//                    if (item2.getDescription().compareTo(item1.getDescription()) > 0) {
+//                        tempDesc = item1.getDescription();
+//                        tempSotck = item1.getQuantityInStock();
+//                        tempReq = item1.getRequiredAmount();
+//                        item1.setDescription(item2.getDescription());
+//                        item1.setQuantityInStock(item2.getQuantityInStock());
+//                        item1.setRequiredAmount(item2.getRequiredAmount());
+//                        item2.setDescription(tempDesc);
+//                        item2.setQuantityInStock(tempSotck);
+//                        item2.setRequiredAmount(tempReq);
+//                        breaked = true;
+//                        break;
+//                    } else {
+//                        breaked = false;
+//                    }
+//                }
+//            }
+//            if (breaked) {
+//                breaked = false;
+//                break;
+//            } 
+//            
+//        }
 
         InventoryItem[] inventory2 = DesertEscape.getCurrentGame().getInventoryItem();
 
+        //Java do the sorting for you
+        Arrays.sort(inventory2, new Comparator<InventoryItem>() {
+            @Override
+            public int compare(InventoryItem o1, InventoryItem o2) {
+                return o1.getQuantityInStock() - o2.getQuantityInStock();
+            }
+        });
+        
         for (InventoryItem item : inventory2) {
             //display the description, the required amount and amount in stock
             this.console.println(String.format("%1$10s%2$10s%3$15s", item.getDescription(),
@@ -151,25 +159,33 @@ public class InventorySort extends View {
         this.console.println("Items ordered by Inventory Stock");
         this.console.println(String.format("%1$10s%2$10s%3$15s", "Description", "In Stock", "Requirement"));
 
-        for (InventoryItem item1 : inventory) {
-            for (InventoryItem item2 : inventory) {
-                if (item2.getQuantityInStock() < item1.getQuantityInStock()) {
-                    tempDesc = item1.getDescription();
-                    tempSotck = item1.getQuantityInStock();
-                    tempReq = item1.getRequiredAmount();
-                    item1.setDescription(item2.getDescription());
-                    item1.setQuantityInStock(item2.getQuantityInStock());
-                    item1.setRequiredAmount(item2.getRequiredAmount());
-                    item2.setDescription(tempDesc);
-                    item2.setQuantityInStock(tempSotck);
-                    item2.setRequiredAmount(tempReq);
-                    break;
-                }
-            }
-        }
+//        for (InventoryItem item1 : inventory) {
+//            for (InventoryItem item2 : inventory) {
+//                if (item2.getQuantityInStock() < item1.getQuantityInStock()) {
+//                    tempDesc = item1.getDescription();
+//                    tempSotck = item1.getQuantityInStock();
+//                    tempReq = item1.getRequiredAmount();
+//                    item1.setDescription(item2.getDescription());
+//                    item1.setQuantityInStock(item2.getQuantityInStock());
+//                    item1.setRequiredAmount(item2.getRequiredAmount());
+//                    item2.setDescription(tempDesc);
+//                    item2.setQuantityInStock(tempSotck);
+//                    item2.setRequiredAmount(tempReq);
+//                    break;
+//                }
+//            }
+//        }
 
         InventoryItem[] inventory2 = DesertEscape.getCurrentGame().getInventoryItem();
 
+        //Java do the sorting for you
+        Arrays.sort(inventory2, new Comparator<InventoryItem>() {
+            @Override
+            public int compare(InventoryItem o1, InventoryItem o2) {
+                return o1.getQuantityInStock() - o2.getQuantityInStock();
+            }
+        });
+        
         for (InventoryItem item : inventory2) {
             //display the description, the required amount and amount in stock
             this.console.println(String.format("%1$10s%2$10s%3$15s", item.getDescription(),
