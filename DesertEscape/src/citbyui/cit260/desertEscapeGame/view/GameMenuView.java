@@ -40,15 +40,13 @@ public class GameMenuView extends View {
                 + "\n  E - Move person to East"
                 + "\n  S - Move person to South"
                 + "\n  W - Move person to West"
-                + "\n  V - Inventory menu"
-                + "\n  I - View inventory list with costs"
+                + "\n----------------------------"
+                + "\n  I - Inventory menu"
                 + "\n  P - Print inventory list"
-                + "\n  Z - Sort inventory list"
+                + "\n----------------------------"
                 + "\n  R - Return to Main Menu"
                 + "\n"
-                + "\n  Please Enter Your Selection Below"
-                + "\n  "
-                + "\n----------------------------");
+                + "\n    Enter Your Selection");
     }
 
     @Override
@@ -74,19 +72,13 @@ public class GameMenuView extends View {
             case "W": // Move person to New location
                 this.MoveWest();
                 break;
-            case "V": // view inventory Menu
+            case "I": // view inventory Menu
                 this.InventoryMenu();
-                break;
-            case "I": // View inventory list with costs
-                this.ViewInventory();
                 break;
             case "P": // View inventory list with costs
                 this.PrintReport();
                 break;
-            case "Z": // Sorted inventory list
-                this.SortInventory();
-                break;
-             case "R": // quit the game
+            case "R": // quit the game
                 return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -133,6 +125,8 @@ public class GameMenuView extends View {
             this.console.println(ex.getMessage());
             //Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        ContentLocation();
 
         // if (mc.moveNorth(DesertEscape.getCurrentGame()) == false) {
         // this.console.println("You cannot move there");
@@ -146,6 +140,8 @@ public class GameMenuView extends View {
             this.console.println(ex.getMessage());
             //Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        ContentLocation();
 
         //mc.moveEast(DesertEscape.getCurrentGame();
 //        if (mc.moveEast(DesertEscape.getCurrentGame()) == false) {
@@ -161,6 +157,9 @@ public class GameMenuView extends View {
             this.console.println(ex.getMessage());
             //Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        ContentLocation();
+        
         //if (mc.moveSouth(DesertEscape.getCurrentGame()) == false) {
         //    this.console.println("You cannot move there");
         //}
@@ -174,6 +173,9 @@ public class GameMenuView extends View {
             this.console.println(ex.getMessage());
             //Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        ContentLocation();
+        
         /*if (mc.moveWest(DesertEscape.getCurrentGame()) == false) {
             this.console.println("You cannot move there");
         }*/
@@ -197,7 +199,5 @@ public class GameMenuView extends View {
             ErrorView.display("GameMenuView", e.getMessage());
         }
     }
-
-   
 
 }

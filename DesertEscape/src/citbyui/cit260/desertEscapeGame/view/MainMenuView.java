@@ -51,7 +51,7 @@ public class MainMenuView extends View {
                 + "\n               H - How to play the game"
                 + "\n               Q - Quit"
                 + "\n"
-                + "\n           Please Enter Your Menu Selection: ");
+                + "\n               Enter Your Menu Selection: ");
     }
 
     @Override

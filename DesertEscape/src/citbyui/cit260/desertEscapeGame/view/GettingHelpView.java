@@ -26,11 +26,11 @@ public class GettingHelpView extends View {
                 + "\n  ======================================"
                 + "\n  G - What is the goal of the game? "
                 + "\n  M - How to move in the location"
-                + "\n  U - how to use the inventory"
-                + "\n  Q - Return back"
+                + "\n  U - How to use the inventory"
+                + "\n  R - Return back"
+                + "\n  ======================================"
                 + "\n"
-                + "\n  Enter Your Selection Below"
-                + "\n  ======================================");
+                + "\n          Enter Your Selection");
     }
 
     @Override
@@ -47,8 +47,8 @@ public class GettingHelpView extends View {
             case "U": // amount of resources estimated and available
                 this.displayEstimatedResource();
                 break;
-            case "Q":
-                break;
+            case "R":
+                return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
                 break;
@@ -59,7 +59,8 @@ public class GettingHelpView extends View {
     private void goalGame() {
         this.console.println("\n*****************************************************************"
                 + "\n*                                                               *"
-                + "\n* This is Nicolas Williams Desert Escape Game                   *"
+                + "\n*        This is Nicolas Williams Desert Escape Game            *"
+                + "\n*                                                               *"
                 + "\n* In this game you will take the role of Nicolas Williams       *"
                 + "\n* who was born on earth in a distant future                     *"
                 + "\n* But there was a global catastroph.                            *"
@@ -80,10 +81,40 @@ public class GettingHelpView extends View {
     }
 
     private void moveGame() {
-        this.console.println("\n*** moveGame stub function called ***");
+        this.console.println("\n*****************************************************************"
+                + "\n*                                                               *"
+                + "\n*             HOW TO MOVE IN THE LOCATION                       *"
+                + "\n*                                                               *"
+                + "\n* After select the 'Start New Game' option, you will receive    *"
+                + "\n* a new menu in which you can select the locations options to   *"
+                + "\n* find the resources and save the earth. The principal are:     *"
+                + "\n*                                                               *"
+                + "\n* VIEW MAP: see all screnes locations in the map                *"
+                + "\n* VIEW CONTENT OF LOCATIONS: obtain the exactly ubication point *"
+                + "\n* MOVE TO NORTH: move your locations one point to north side    *"
+                + "\n* MOVE TO EAST: move your locations one point to easr side      *"
+                + "\n* MOVE TO SOUTH: move your locations one point to south side    *"
+                + "\n* MOVE TO WEST: move your locations one point to west side      *"
+                + "\n*                                                               *"
+                + "\n*****************************************************************");
     }
 
     private void displayEstimatedResource() {
-        this.console.println("\n*** displayEstimatedResource stub function called ***");
+        this.console.println("\n********************************************************************"
+                + "\n*                                                                  *"
+                + "\n*                  THE INVENTORY CONTROL                           *"
+                + "\n*                                                                  *"
+                + "\n* All your voyage require to control the inventory that you        *"
+                + "\n* have or to need carry in the voyage to win the game. You can     *"
+                + "\n* obtain this information selecting the options:                   *"
+                + "\n*                                                                  *"
+                + "\n* INVENTORY MENU: you receive a new menu in which can select:      *"
+                + "\n*   SORTED BY DESCRIPTION: inventory list ordered by description   *"
+                + "\n*   SORTED BY STOCK: inventory list ordered by stock               *"
+                + "\n*   SORTED BY REQUIREMENT: inventory list ordered by requirement   *"
+                + "\n*   INVENTORY LIST SAVE: to save your current inventory list       *"
+                + "\n*   INVENTORY FILE REPORT: a report of the current inventory       *"
+                + "\n*                                                                  *"
+                + "\n********************************************************************");
     }
 }
