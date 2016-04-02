@@ -20,6 +20,7 @@ public class InventoryItem implements Serializable {
     private String inventory;
     private Integer quantityInStock;
     private Integer requiredAmount;
+    private Item item;
     
     public InventoryItem() {
     }

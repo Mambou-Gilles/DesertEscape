@@ -32,26 +32,9 @@ public class StartProgramView extends View {
         // this.displayPromptMessage = "\nPlease enter your name";
         super("\n*****************************************************************"
                 + "\n*                                                               *"
-                + "\n*                WELCOME TO DESERT ESCAPE GAME                  *"
+                + "\n*                       DESERT ESCAPE                           *"
                 + "\n*                                                               *"
-                + "\n*   This is Nicolas Williams Desert Escape Game                 *"
-                + "\n* In this game you will take the role of Nicolas Williams       *"
-                + "\n* who was born on earth in a distant future                     *"
-                + "\n* But there was a global catastroph.                            *"
-                + "\n* You are forced to leave earth and travel to another planet    *"
-                + "\n*                                                               *"
-                + "\n* You will face many threat on this new planet,                 *"
-                + "\n* and you must avoid being taken by an enemy alien race         *"
-                + "\n* In the game course, you will come to learn of a time machine  *"
-                + "\n* that will allow you to rewrite time and reverse               *"
-                + "\n* he global catastroph that destroyed earth.                    *"
-                + "\n* This will become your and van be achieved by hunting down     *"
-                + "\n* artifacts and items and assembling a time machine based off   *"
-                + "\n* of a schematic hat was discovered                             *"
-                + "\n* Find the resources needed to build the time machine and       *"
-                + "\n* save the earth.                                               *"
-                + "\n*                                                               *"
-                + "\n*               Please enter your Name below                    *"
+                + "\n*                    Enter your Name below                      *"
                 + "\n*                                                               *"
                 + "\n*****************************************************************");
     }
@@ -86,7 +69,7 @@ public class StartProgramView extends View {
 
     private void displayNextView(Player plyrName) {
         this.console.println("\n================================================"
-                + "\n Welcome to Desert Escape *** " + plyrName.getPlayerName() + " ***"
+                + "\n Welcome to the Desert Escape game *** " + plyrName.getPlayerName() + " ***"
                 + "\n We hope that you have a lot of fun!"
                 + "\n=================================================="
         );

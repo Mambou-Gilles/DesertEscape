@@ -44,9 +44,7 @@ public class GameMenuView extends View {
                 + "\n  I - View inventory list with costs"
                 + "\n  P - Print inventory list"
                 + "\n  Z - Sort inventory list"
-                + "\n  I - Inventory activities"
-                + "\n  H - Help"
-                + "\n  Q - Quit"
+                + "\n  R - Return to Main Menu"
                 + "\n"
                 + "\n  Please Enter Your Selection Below"
                 + "\n  "
@@ -88,10 +86,7 @@ public class GameMenuView extends View {
             case "Z": // Sorted inventory list
                 this.SortInventory();
                 break;
-            case "H": // View help
-                this.displayHelp();
-                break;
-            case "Q": // quit the game
+             case "R": // quit the game
                 return true;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -203,8 +198,6 @@ public class GameMenuView extends View {
         }
     }
 
-    private void displayHelp() {
-        this.console.println("\n *** viewhelp stub function called ***");
-    }
+   
 
 }

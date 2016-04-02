@@ -7,8 +7,6 @@ package citbyui.cit260.desertEscapeGame.view;
 
 import byui.cit260.desertEscapeGame.exceptions.GameControlException;
 import byui.cit260.desertEscapeGame.model.InventoryItem;
-
-
 import citbyui.cit260.desertEscapeGame.view.ViewInterface.View;
 import citbyui.cit260.desertEscapeGame.view.GameMenuView;
 import desertescape.DesertEscape;
@@ -21,35 +19,6 @@ import java.util.Comparator;
  * @author Paez & Mambou
  */
 public class InventorySort extends View {
-
-    static void InventoryPrint(InventoryItem[] inventory, String filepath) throws GameControlException {  
-       
-        
-        try (PrintWriter out = new PrintWriter(filepath)){
-            
-           
-        
-            
-            // print title and column heading
-            out.println("\n\n                Inventory Report                 ");
-            out.printf( "%n%-20s%10s%10s", "Description", "Quantity In Stock", "Required Amount");
-            out.printf( "%n%-20s%10s%10s", "---------------------------------------------------");
-             
-
-//print the description, the required amount and amount in stock
-            for (InventoryItem item : inventory) {
-           
-            out.printf("%n%-20s%8d%13.2f", item.getDescription()
-                                                       ,item.getQuantityInStock()
-                                                    ,item.getRequiredAmount());
-        }
-           
-        } catch (Exception ex) {
-           //System.out.println("GameMenuView" + ex.getMessage());
-           //throw new GameControlException(ex.getMessage());
-        }
-        
-    }
 
     private String message = "";
     private String displayScene = "";
@@ -64,8 +33,8 @@ public class InventorySort extends View {
                 + "\n#   LETTER       SORT BY            #"
                 + "\n#     D       Item Description      #"
                 + "\n#     S       Item Stock            #"
-                + "\n#     R       Item Requirement      #"
-                + "\n#     Q       Quit                  #"
+                + "\n#     I       Item Requirement      #"
+                + "\n#     R       Return                #"
                 + "\n#                                   #"
                 + "\n#####################################");
     }
@@ -82,10 +51,10 @@ public class InventorySort extends View {
             case "S": // Sort by Item Inventory
                 this.SortItemInventory();
                 break;
-            case "R": // Sort by Requirements
+            case "I": // Sort by Requirements
                 this.SortItemRequirment();
                 break;
-            case "Q": // return previous menu
+            case "R": // return previous menu
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
@@ -151,14 +120,16 @@ public class InventorySort extends View {
     }
 
     private void SortItemInventory() {
-        InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
+       // InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
         String tempDesc;
         Integer tempSotck;
         Integer tempReq;
 
+        
         this.console.println("Items ordered by Inventory Stock");
         this.console.println(String.format("%1$10s%2$10s%3$15s", "Description", "In Stock", "Requirement"));
 
+        
 //        for (InventoryItem item1 : inventory) {
 //            for (InventoryItem item2 : inventory) {
 //                if (item2.getQuantityInStock() < item1.getQuantityInStock()) {
@@ -240,4 +211,34 @@ public class InventorySort extends View {
 
         //this.console.println("\n*** SortItemRequirment() function called ***");
     }
+    
+    static void InventoryPrint(InventoryItem[] inventory, String filepath) throws GameControlException {  
+       
+        
+        try (PrintWriter out = new PrintWriter(filepath)){
+            
+           
+        
+            
+            // print title and column heading
+            out.println("\n\n                Inventory Report                 ");
+            out.printf( "%n%-20s%10s%10s", "Description", "Quantity In Stock", "Required Amount");
+            out.printf( "%n%-20s%10s%10s", "---------------------------------------------------");
+             
+
+//print the description, the required amount and amount in stock
+            for (InventoryItem item : inventory) {
+           
+            out.printf("%n%-20s%8d%13.2f", item.getDescription()
+                                                       ,item.getQuantityInStock()
+                                                    ,item.getRequiredAmount());
+        }
+           
+        } catch (Exception ex) {
+           //System.out.println("GameMenuView" + ex.getMessage());
+           //throw new GameControlException(ex.getMessage());
+        }
+        
+    }
+    
 }

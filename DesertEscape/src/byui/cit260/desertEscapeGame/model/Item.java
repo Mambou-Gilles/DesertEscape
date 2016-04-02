@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author mambou
  */
-public enum Item {
+public enum Item implements Serializable {
     
     water,
     food,

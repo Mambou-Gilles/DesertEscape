@@ -25,9 +25,8 @@ public class GettingHelpView extends View {
                 + "\n             GETTING HELP"
                 + "\n  ======================================"
                 + "\n  G - What is the goal of the game? "
-                + "\n  M - How to move"
-                + "\n  E - Estimating the amount of resources"
-                + "\n  S - Stocked resources"
+                + "\n  M - How to move in the location"
+                + "\n  U - how to use the inventory"
                 + "\n  Q - Return back"
                 + "\n"
                 + "\n  Enter Your Selection Below"
@@ -45,11 +44,8 @@ public class GettingHelpView extends View {
             case "M": // how to move
                 this.moveGame();
                 break;
-            case "E": // amount of resources estimated and available
+            case "U": // amount of resources estimated and available
                 this.displayEstimatedResource();
-                break;
-            case "S": // stocked resources
-                this.stockResource();
                 break;
             case "Q":
                 break;
@@ -61,7 +57,26 @@ public class GettingHelpView extends View {
     }
 
     private void goalGame() {
-        this.console.println("\n*** goalGame stub function called ***");
+        this.console.println("\n*****************************************************************"
+                + "\n*                                                               *"
+                + "\n* This is Nicolas Williams Desert Escape Game                   *"
+                + "\n* In this game you will take the role of Nicolas Williams       *"
+                + "\n* who was born on earth in a distant future                     *"
+                + "\n* But there was a global catastroph.                            *"
+                + "\n* You are forced to leave earth and travel to another planet    *"
+                + "\n*                                                               *"
+                + "\n* You will face many threat on this new planet,                 *"
+                + "\n* and you must avoid being taken by an enemy alien race         *"
+                + "\n* In the game course, you will come to learn of a time machine  *"
+                + "\n* that will allow you to rewrite time and reverse               *"
+                + "\n* he global catastroph that destroyed earth.                    *"
+                + "\n* This will become your and van be achieved by hunting down     *"
+                + "\n* artifacts and items and assembling a time machine based off   *"
+                + "\n* of a schematic hat was discovered                             *"
+                + "\n* Find the resources needed to build the time machine and       *"
+                + "\n* save the earth.                                               *"
+                + "\n*                                                               *"
+                + "\n*****************************************************************");
     }
 
     private void moveGame() {
@@ -70,9 +85,5 @@ public class GettingHelpView extends View {
 
     private void displayEstimatedResource() {
         this.console.println("\n*** displayEstimatedResource stub function called ***");
-    }
-
-    private void stockResource() {
-        this.console.println("\n*** stockResource stub function called ***");
     }
 }

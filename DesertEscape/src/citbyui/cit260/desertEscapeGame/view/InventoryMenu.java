@@ -29,12 +29,12 @@ public class InventoryMenu extends View {
                 + "\n#   LETTER      INVENTORY           #"
                 + "\n#     D     Sorted by Description   #"
                 + "\n#     S     Sorted by Stock         #"
-                + "\n#     R     Sorted by Requirement   #"
+                + "\n#     I     Sorted by Requirement   #"
                 + "\n#                                   #"
                 + "\n#   LETTER       REPORTS            #"
                 + "\n#     L     Inventory List Save     #"
                 + "\n#     F     Inventory File Report   #"
-                + "\n#     Q     Quit                    #"
+                + "\n#     R     Return                  #"
                 + "\n#                                   #"
                 + "\n#####################################");
     }
@@ -51,7 +51,7 @@ public class InventoryMenu extends View {
             case "S": // Sort by Item Inventory
                 this.SortItemInventory();
                 break;
-            case "R": // Sort by Requirements
+            case "I": // Sort by Item Requirements
                 this.SortItemRequirment();
                 break;
             case "L": // Inventory List 
@@ -60,7 +60,7 @@ public class InventoryMenu extends View {
             case "F": // Inventory File Report
                 this.ReportList();
                 break;
-            case "Q": // return previous menu
+            case "R": // return previous menu
                 break;
             default:
                 this.console.println("\n*** Invalid selection *** Try again");
