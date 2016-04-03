@@ -60,7 +60,7 @@ public class InventoryMenu extends View {
                 this.SortItemInventory();
                 break;
             case "I": // Sort by Item Requirements
-                this.SortItemRequirment();
+                this.SortItemRequirement();
                 break;
             case "L": // Inventory List 
                 this.InventoryList();
@@ -92,48 +92,16 @@ public class InventoryMenu extends View {
     }
 
     private void SortItemDescription() {
-        InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
-        String tempDesc;
-        Integer tempSotck;
-        Integer tempReq;
-        Boolean breaked = false;
-
-        this.console.println("\tItems ordered by Description");
+        this.console.println("   Items ordered by Description");
         this.console.println(String.format("%1$10s%2$10s%3$15s", "Description", "In Stock", "Requirement"));
 
-//        while (!breaked) {
-//            for (InventoryItem item1 : inventory) {
-//                for (InventoryItem item2 : inventory) {
-//                    if (item2.getDescription().compareTo(item1.getDescription()) > 0) {
-//                        tempDesc = item1.getDescription();
-//                        tempSotck = item1.getQuantityInStock();
-//                        tempReq = item1.getRequiredAmount();
-//                        item1.setDescription(item2.getDescription());
-//                        item1.setQuantityInStock(item2.getQuantityInStock());
-//                        item1.setRequiredAmount(item2.getRequiredAmount());
-//                        item2.setDescription(tempDesc);
-//                        item2.setQuantityInStock(tempSotck);
-//                        item2.setRequiredAmount(tempReq);
-//                        breaked = true;
-//                        break;
-//                    } else {
-//                        breaked = false;
-//                    }
-//                }
-//            }
-//            if (breaked) {
-//                breaked = false;
-//                break;
-//            } 
-//            
-//        }
         InventoryItem[] inventory2 = DesertEscape.getCurrentGame().getInventoryItem();
 
         //Java do the sorting for you
         Arrays.sort(inventory2, new Comparator<InventoryItem>() {
             @Override
             public int compare(InventoryItem o1, InventoryItem o2) {
-                return o1.getQuantityInStock() - o2.getQuantityInStock();
+                return o1.getDescription().compareTo(o2.getDescription());
             }
         });
 
@@ -147,30 +115,10 @@ public class InventoryMenu extends View {
     }
 
     private void SortItemInventory() {
-        // InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
-        String tempDesc;
-        Integer tempSotck;
-        Integer tempReq;
 
-        this.console.println("\tItems ordered by Inventory Stock");
+        this.console.println("   Items ordered by Inventory Stock");
         this.console.println(String.format("%1$10s%2$10s%3$15s", "Description", "In Stock", "Requirement"));
 
-//        for (InventoryItem item1 : inventory) {
-//            for (InventoryItem item2 : inventory) {
-//                if (item2.getQuantityInStock() < item1.getQuantityInStock()) {
-//                    tempDesc = item1.getDescription();
-//                    tempSotck = item1.getQuantityInStock();
-//                    tempReq = item1.getRequiredAmount();
-//                    item1.setDescription(item2.getDescription());
-//                    item1.setQuantityInStock(item2.getQuantityInStock());
-//                    item1.setRequiredAmount(item2.getRequiredAmount());
-//                    item2.setDescription(tempDesc);
-//                    item2.setQuantityInStock(tempSotck);
-//                    item2.setRequiredAmount(tempReq);
-//                    break;
-//                }
-//            }
-//        }
         InventoryItem[] inventory2 = DesertEscape.getCurrentGame().getInventoryItem();
 
         //Java do the sorting for you
@@ -187,34 +135,13 @@ public class InventoryMenu extends View {
                     item.getQuantityInStock(),
                     item.getRequiredAmount()));
         }
-        // this.console.println("\n*** SortItemInventory() function called ***");
     }
 
-    private void SortItemRequirment() {
-        InventoryItem[] inventory = DesertEscape.getCurrentGame().getInventoryItem();
-        String tempDesc;
-        Integer tempSotck;
-        Integer tempReq;
+    private void SortItemRequirement() {
 
-        this.console.println("\tItems ordered by Inventory Stock");
+        this.console.println("   Items ordered by Inventory Stock");
         this.console.println(String.format("%1$10s%2$10s%3$15s", "Description", "In Stock", "Requirement"));
 
-//        for (InventoryItem item1 : inventory) {
-//            for (InventoryItem item2 : inventory) {
-//                if (item2.getRequiredAmount() < item1.getRequiredAmount()) {
-//                    tempDesc = item1.getDescription();
-//                    tempSotck = item1.getQuantityInStock();
-//                    tempReq = item1.getRequiredAmount();
-//                    item1.setDescription(item2.getDescription());
-//                    item1.setQuantityInStock(item2.getQuantityInStock());
-//                    item1.setRequiredAmount(item2.getRequiredAmount());
-//                    item2.setDescription(tempDesc);
-//                    item2.setQuantityInStock(tempSotck);
-//                    item2.setRequiredAmount(tempReq);
-//                    break;
-//                }
-//            }
-//        }
         InventoryItem[] inventory2 = DesertEscape.getCurrentGame().getInventoryItem();
 
         //Java do the sorting for you
@@ -232,7 +159,6 @@ public class InventoryMenu extends View {
                     item.getRequiredAmount()));
         }
 
-        //this.console.println("\n*** SortItemRequirment() function called ***");
     }
 
     private void InventoryList() {

@@ -106,12 +106,6 @@ public class GameMenuView extends View {
         }
     }
 
-    private void SortInventory() {
-        InventorySort inventorySortItem = new InventorySort();
-        inventorySortItem.display();
-
-    }
-
     private void ContentLocation() {
         Location lc = DesertEscape.getCurrentGame().getPlayer().getLocation();
         this.console.println("You are at: (" + lc.getRow() + "," + lc.getColumn() + ")");

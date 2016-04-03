@@ -92,10 +92,10 @@ public class GettingHelpView extends View {
                 + "\n*                                                               *"
                 + "\n* VIEW MAP: see all screnes locations in the map                *"
                 + "\n* VIEW CONTENT OF LOCATIONS: obtain the exactly ubication point *"
-                + "\n* MOVE TO NORTH: move your locations one point to north side    *"
-                + "\n* MOVE TO EAST: move your locations one point to easr side      *"
-                + "\n* MOVE TO SOUTH: move your locations one point to south side    *"
-                + "\n* MOVE TO WEST: move your locations one point to west side      *"
+                + "\n* MOVE TO NORTH: move your locations one point to North side    *"
+                + "\n* MOVE TO EAST: move your locations one point to East side      *"
+                + "\n* MOVE TO SOUTH: move your locations one point to South side    *"
+                + "\n* MOVE TO WEST: move your locations one point to West side      *"
                 + "\n*                                                               *"
                 + "\n*****************************************************************");
     }
